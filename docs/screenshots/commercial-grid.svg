@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#08080a"/>
+  <text x="60" y="70" fill="#e8b23a" font-family="Arial, sans-serif" font-size="14" letter-spacing="3">COMMERCIAL &amp; VIDEO</text>
+  <text x="60" y="120" fill="#f5f3ee" font-family="Georgia, serif" font-size="48" font-weight="700">Brand work &amp; launch films</text>
+  <g transform="translate(60 170)">
+    <rect width="250" height="360" rx="12" fill="#16a34a" opacity="0.85"/><text x="20" y="320" fill="#fff" font-family="Arial" font-size="18" font-weight="700">Safaricom 5G</text>
+    <rect x="280" width="250" height="360" rx="12" fill="#b91c1c" opacity="0.85"/><text x="300" y="320" fill="#fff" font-family="Arial" font-size="18" font-weight="700">Equity Bank</text>
+    <rect x="560" width="250" height="360" rx="12" fill="#ca8a04" opacity="0.85"/><text x="580" y="320" fill="#fff" font-family="Arial" font-size="18" font-weight="700">Tusker Festival</text>
+    <rect x="840" width="250" height="360" rx="12" fill="#0284c7" opacity="0.85"/><text x="860" y="320" fill="#fff" font-family="Arial" font-size="18" font-weight="700">UNICEF PSA</text>
+  </g>
+  <text x="60" y="640" fill="#f5f3ee" opacity="0.45" font-family="Arial, sans-serif" font-size="16">/commercial  branded video catalogue</text>
+</svg>
