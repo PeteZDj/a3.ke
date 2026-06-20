@@ -82,6 +82,25 @@ export default function Home() {
 
       <FilmRow title="Coming Soon" films={[...byStatus('Coming Soon'), ...byStatus('In Production')]} to="/films" onPlay={setTrailer} />
 
+      {/* rate card teaser */}
+      <section className="section-tight">
+        <div className="container">
+          <Reveal className="rate-teaser">
+            <div>
+              <div className="kicker">Video production</div>
+              <h2 style={{ marginTop: 12, marginBottom: 10 }}>Premium video, transparent rates</h2>
+              <p style={{ color: 'var(--ink-soft)', maxWidth: 520, margin: 0 }}>
+                Commercials from $1,250 · music videos from $500 · weddings from $400 · DP / film from $1,950.
+                Full rate card with scope and booking terms.
+              </p>
+            </div>
+            <Link className="btn btn-gold" to="/rates">
+              Hire Us <ArrowRight style={{ width: 18, height: 18 }} />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* studio stats strip */}
       <section className="strip section">
         <div className="container">

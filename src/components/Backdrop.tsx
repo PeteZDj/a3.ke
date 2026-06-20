@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import type { Film } from '../types';
 import { BACKDROP, POSTER } from '../types';
+import { artworkDataUri } from '../lib/artwork';
 
-// Landscape backdrop. Tries the dedicated backdrop first, then the film's poster
-// art (all art is 3:2 so it works as a backdrop too), then a cinematic gradient.
+// Landscape backdrop. Tries photo assets first, then cinematic SVG artwork.
 export function Backdrop({
   film,
   className,
@@ -13,27 +13,20 @@ export function Backdrop({
   className?: string;
   alt?: string;
 }) {
-  const [step, setStep] = useState<0 | 1 | 2>(0);
-
-  if (step === 2) {
-    const c = film.accent;
-    return (
-      <div
-        className="hero-fallback"
-        style={{
-          background: `radial-gradient(120% 130% at 18% 8%, ${c}aa, transparent 55%), linear-gradient(120deg, ${c}33, #08080a 70%)`,
-        }}
-        aria-hidden="true"
-      />
-    );
-  }
+  const [src, setSrc] = useState(BACKDROP(film.slug));
 
   return (
     <img
       className={className}
-      src={step === 0 ? BACKDROP(film.slug) : POSTER(film.slug)}
+      src={src}
       alt={alt ?? `${film.title} still`}
-      onError={() => setStep((s) => (s === 0 ? 1 : 2))}
+      onError={() => {
+        setSrc((current) => {
+          if (current.endsWith('.jpg') && current.includes('/backdrops/')) return POSTER(film.slug);
+          if (current.endsWith('.jpg')) return artworkDataUri(film, 'backdrop');
+          return current;
+        });
+      }}
     />
   );
 }

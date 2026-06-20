@@ -48,6 +48,7 @@ export function Footer() {
             <Link to="/series">Series &amp; Docs</Link>
             <Link to="/commercial">Commercial &amp; Video</Link>
             <Link to="/sport">Sport Coverage</Link>
+            <Link to="/rates">Rate Card</Link>
           </div>
 
           <div className="footer-col">

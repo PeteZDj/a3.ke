@@ -9,6 +9,7 @@ const links = [
   { to: '/series', label: 'Series & Docs' },
   { to: '/commercial', label: 'Commercial' },
   { to: '/sport', label: 'Sport' },
+  { to: '/rates', label: 'Rates' },
   { to: '/about', label: 'Studio' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -51,6 +52,7 @@ export function Navbar() {
             <Link to="/films" className="icon-btn desktop-only" aria-label="Browse films">
               <Search />
             </Link>
+            <Link to="/rates" className="btn btn-ghost btn-sm desktop-only">Hire Us</Link>
             <Link to="/films" className="btn btn-gold btn-sm desktop-only">Watch Now</Link>
             <button className="icon-btn nav-toggle" aria-label="Open menu" onClick={() => setOpen(true)}>
               <Menu />
@@ -74,7 +76,8 @@ export function Navbar() {
                 {l.label}
               </NavLink>
             ))}
-            <Link to="/films" className="btn btn-gold" style={{ marginTop: 18 }}>Watch Now</Link>
+            <Link to="/rates" className="btn btn-ghost" style={{ marginTop: 18 }}>Hire Us</Link>
+            <Link to="/films" className="btn btn-gold" style={{ marginTop: 12 }}>Watch Now</Link>
           </aside>
         </>
       )}

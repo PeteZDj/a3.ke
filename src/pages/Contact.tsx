@@ -49,6 +49,7 @@ export default function Contact() {
                       <option>General enquiry</option>
                       <option>Pitch / submit a script</option>
                       <option>Commercial / branded video</option>
+                      <option>Rate card / annual retainer</option>
                       <option>Sport coverage / live broadcast</option>
                       <option>Partnership</option>
                       <option>Press &amp; media</option>
