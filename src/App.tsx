@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Commercial from './pages/Commercial';
 import Sport from './pages/Sport';
 import RateCard from './pages/RateCard';
+import ServiceDetail from './pages/ServiceDetail';
 
 function NotFound() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
           <Route path="/sport" element={<Sport />} />
           <Route path="/about" element={<About />} />
           <Route path="/rates" element={<RateCard />} />
+          <Route path="/rates/:slug" element={<ServiceDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

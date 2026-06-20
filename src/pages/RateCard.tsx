@@ -11,6 +11,7 @@ import {
   proBonoLine,
   rateFaqs,
   rateLines,
+  servicePath,
   websiteServices,
 } from '../data/rateCard';
 
@@ -55,17 +56,20 @@ export default function RateCard() {
           </Reveal>
           <div className="rate-services-grid">
             {websiteServices.map((svc, i) => (
-              <Reveal key={svc.id} className="rate-service-card" delay={i * 40}>
-                <div className="rate-service-accent" style={{ background: svc.accent }} aria-hidden />
-                <div className="rate-service-body">
-                  <div className="rate-service-head">
-                    <h3>{svc.title}</h3>
-                    <span className={`rate-service-price${svc.id === 'pro-bono' ? ' rate-service-price--probono' : ''}`}>
-                      {svc.fromPrice}
-                    </span>
+              <Reveal key={svc.id} delay={i * 40}>
+                <Link to={servicePath(svc.slug)} className="rate-service-card rate-service-card--link">
+                  <div className="rate-service-accent" style={{ background: svc.accent }} aria-hidden />
+                  <div className="rate-service-body">
+                    <div className="rate-service-head">
+                      <h3>{svc.title}</h3>
+                      <span className={`rate-service-price${svc.priceUsd === null ? ' rate-service-price--probono' : ''}`}>
+                        {svc.priceLabel}
+                      </span>
+                    </div>
+                    <p>{svc.description}</p>
+                    <span className="rate-service-more">View details →</span>
                   </div>
-                  <p>{svc.description}</p>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -86,17 +90,23 @@ export default function RateCard() {
               <thead>
                 <tr>
                   <th scope="col">Service</th>
-                  <th scope="col" className="num">Website rate</th>
+                  <th scope="col" className="num">Price per video</th>
                 </tr>
               </thead>
               <tbody>
                 {websiteServices.map((svc) => (
-                  <tr key={svc.id}>
+                  <tr key={svc.id} className="rate-table-row-link">
                     <td>
-                      <span className="rate-dot" style={{ background: svc.accent }} aria-hidden />
-                      <strong>{svc.title}</strong>
+                      <Link to={servicePath(svc.slug)} className="rate-table-link">
+                        <span className="rate-dot" style={{ background: svc.accent }} aria-hidden />
+                        <strong>{svc.title}</strong>
+                      </Link>
                     </td>
-                    <td className="num rate-total">{svc.fromPrice}</td>
+                    <td className="num rate-total">
+                      <Link to={servicePath(svc.slug)} className="rate-table-link rate-table-link--num">
+                        {svc.priceLabel}
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>

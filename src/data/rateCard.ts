@@ -15,81 +15,127 @@ export type RateLine = {
 
 export type WebsiteService = {
   id: string;
+  slug: string;
   title: string;
-  fromPrice: string;
+  /** Exact per-video rate in USD; null for pro bono. */
+  priceUsd: number | null;
+  priceLabel: string;
   description: string;
   accent: string;
+  deliverables: string[];
+  typicalScope: string;
+  turnaround: string;
 };
 
 export const ANNUAL_REVENUE_USD = 23_400;
 export const ANNUAL_VIDEO_COUNT = 30;
 export const PRO_BONO_COUNT = 1;
 
-/** Client-facing services — rounded “From” prices for the website. */
+/** Client-facing services — exact per-video rates. */
 export const websiteServices: WebsiteService[] = [
   {
-    id: 'commercial',
-    title: 'Commercial Videos',
-    fromPrice: 'From $1,250',
-    description:
-      'High-quality brand videos, product promos, launch videos, and social media campaigns designed to make your business look premium.',
-    accent: '#3b82f6',
-  },
-  {
-    id: 'music-video',
-    title: 'Music Videos',
-    fromPrice: 'From $500',
-    description:
-      'Creative, stylish, and performance-driven music videos for artists who want visuals that match their sound and image.',
-    accent: '#db2777',
-  },
-  {
-    id: 'real-estate',
-    title: 'Real Estate Videos',
-    fromPrice: 'From $500',
-    description:
-      'Clean property walkthroughs, lifestyle reels, and cinematic real estate showcases for agents, developers, and property brands.',
-    accent: '#16a34a',
-  },
-  {
-    id: 'events',
-    title: 'Events',
-    fromPrice: 'From $1,000',
-    description:
-      'Professional event coverage for launches, corporate events, private functions, and live experiences.',
-    accent: '#ea580c',
-  },
-  {
-    id: 'weddings',
-    title: 'Weddings',
-    fromPrice: 'From $400',
-    description:
-      'Beautiful wedding films and highlight videos that capture the emotion, people, and story of your day.',
-    accent: '#d97706',
-  },
-  {
-    id: 'sport',
-    title: 'Sports Videos',
-    fromPrice: 'From $500',
-    description:
-      'Fast-paced sports content for athletes, teams, gyms, tournaments, and sports brands.',
-    accent: '#dc2626',
-  },
-  {
     id: 'dp-movies',
-    title: 'DP / Film Work',
-    fromPrice: 'From $1,950',
+    slug: 'dp-movies',
+    title: 'DP / Movie Gigs',
+    priceUsd: 1_950,
+    priceLabel: '$1,950',
     description:
       'Cinematography and director of photography services for films, documentaries, short films, and premium productions.',
     accent: '#e8b23a',
+    deliverables: ['Shot & logged master footage', 'Camera & lighting plan', '1× DIT handoff', 'On-set stills pack'],
+    typicalScope: '3–5 shoot days per title; A-camera + B-camera when scripted; LUT preview on set.',
+    turnaround: 'Dailies within 24h; project wrap within 5 business days of final shoot day.',
+  },
+  {
+    id: 'commercial',
+    slug: 'commercial',
+    title: 'Commercial Videos',
+    priceUsd: 1_218.75,
+    priceLabel: '$1,218.75',
+    description:
+      'High-quality brand videos, product promos, launch videos, and social media campaigns designed to make your business look premium.',
+    accent: '#3b82f6',
+    deliverables: ['Hero film (60–90s)', '3× social cut-downs', 'Clean & captioned masters', 'Thumbnail still'],
+    typicalScope: 'Single-location or studio day; client on set; VO and music licencing quoted separately.',
+    turnaround: 'Rough cut in 5 days; final delivery in 10 business days after picture lock.',
+  },
+  {
+    id: 'music-video',
+    slug: 'music-videos',
+    title: 'Music Videos',
+    priceUsd: 487.5,
+    priceLabel: '$487.50',
+    description:
+      'Creative, stylish, and performance-driven music videos for artists who want visuals that match their sound and image.',
+    accent: '#db2777',
+    deliverables: ['1× master MV (3–4 min)', '1× vertical social edit', 'Colour-graded ProRes master', 'Behind-the-scenes stills'],
+    typicalScope: 'Half-day or full-day shoot; treatment supplied by A3 or artist team.',
+    turnaround: 'Offline in 4 days; graded master in 8 business days.',
+  },
+  {
+    id: 'real-estate',
+    slug: 'real-estate',
+    title: 'Real Estate Videos',
+    priceUsd: 487.5,
+    priceLabel: '$487.50',
+    description:
+      'Clean property walkthroughs, lifestyle reels, and cinematic real estate showcases for agents, developers, and property brands.',
+    accent: '#16a34a',
+    deliverables: ['Walk-through film (2–3 min)', 'Drone exteriors when permitted', 'Agent intro bumper', 'MLS-ready export'],
+    typicalScope: 'Half-day on location; gimbal + drone combo where airspace allows.',
+    turnaround: 'Draft in 3 days; final in 6 business days.',
+  },
+  {
+    id: 'events',
+    slug: 'events',
+    title: 'Event Videos',
+    priceUsd: 975,
+    priceLabel: '$975',
+    description:
+      'Professional event coverage for launches, corporate events, private functions, and live experiences.',
+    accent: '#ea580c',
+    deliverables: ['Highlight reel (3–5 min)', 'Full ceremony archive', 'Speaker grab pack', 'Social snippets'],
+    typicalScope: 'Up to 8 hours on site; 2–3 operators; live audio feed when available.',
+    turnaround: 'Social clips in 48h; full highlight within 10 business days.',
+  },
+  {
+    id: 'weddings',
+    slug: 'weddings',
+    title: 'Wedding Videos',
+    priceUsd: 390,
+    priceLabel: '$390',
+    description:
+      'Beautiful wedding films and highlight videos that capture the emotion, people, and story of your day.',
+    accent: '#d97706',
+    deliverables: ['Feature film (8–12 min)', 'Ceremony & vows edit', 'Teaser for social', 'Raw audio of vows'],
+    typicalScope: 'Full-day coverage; 2 shooters; discreet cinema style.',
+    turnaround: 'Teaser in 7 days; full film within 21 business days.',
+  },
+  {
+    id: 'sport',
+    slug: 'sport',
+    title: 'Sport Videos',
+    priceUsd: 487.5,
+    priceLabel: '$487.50',
+    description:
+      'Fast-paced sports content for athletes, teams, gyms, tournaments, and sports brands.',
+    accent: '#dc2626',
+    deliverables: ['Match highlight (5–8 min)', 'Key-moment clips', 'Stats-aware chapter markers', 'Broadcast-safe master'],
+    typicalScope: 'Single match or training camp day; 2–4 cam when budget allows.',
+    turnaround: 'Same-week social clips; full package within 7 business days.',
   },
   {
     id: 'pro-bono',
-    title: 'Community / NGO Slot',
-    fromPrice: 'Pro Bono',
+    slug: 'community',
+    title: 'Community / NGO',
+    priceUsd: null,
+    priceLabel: 'Pro bono slot',
     description:
       'Each year, we reserve space for selected community, youth, NGO, or impact-driven projects. Contact us with your story.',
     accent: '#6b7280',
+    deliverables: ['Documentary short or awareness film', 'Youth-project coverage', 'Social-ready edits', 'Impact story consultation'],
+    typicalScope: 'One selected initiative per calendar year; travel outside Nairobi billed at cost only.',
+    turnaround: 'Timeline agreed with the selected partner at kickoff.',
   },
 ];
 
@@ -197,10 +243,18 @@ export const proBonoLine = {
 
 export const paidGigCount = rateLines.reduce((n, l) => n + l.count, 0);
 
+export function servicePath(slug: string) {
+  return `/rates/${slug}`;
+}
+
+export function getServiceBySlug(slug: string): WebsiteService | undefined {
+  return websiteServices.find((s) => s.slug === slug);
+}
+
 export const rateFaqs = [
   {
     q: 'Are these fixed prices?',
-    a: 'The “From” prices are our published guide rates per video. Final quotes depend on scope, locations, crew size and turnaround. We’ll confirm everything in a statement of work before you book.',
+    a: 'The prices shown are our published per-video guide rates. Final quotes depend on scope, locations, crew size and turnaround. We’ll confirm everything in a statement of work before you book.',
   },
   {
     q: 'Can we book a single video?',

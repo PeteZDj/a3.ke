@@ -90,8 +90,8 @@ export default function Home() {
               <div className="kicker">Video production</div>
               <h2 style={{ marginTop: 12, marginBottom: 10 }}>Premium video, transparent rates</h2>
               <p style={{ color: 'var(--ink-soft)', maxWidth: 520, margin: 0 }}>
-                Commercials from $1,250 · music videos from $500 · weddings from $400 · DP / film from $1,950.
-                Full rate card with scope and booking terms.
+                Commercials $1,218.75 · music videos $487.50 · weddings $390 · DP / film $1,950.
+                Each service has its own page with scope and deliverables.
               </p>
             </div>
             <Link className="btn btn-gold" to="/rates">
