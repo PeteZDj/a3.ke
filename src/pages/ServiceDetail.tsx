@@ -1,17 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Reveal } from '../components/Reveal';
 import { ArrowRight } from '../components/Icons';
+import { getServiceCopy } from '../data/serviceCopy';
 import { getServiceBySlug, servicePath, websiteServices } from '../data/rateCard';
+import { SERVICE_IMAGE, serviceArtworkUri } from '../lib/artwork';
 
 export default function ServiceDetail() {
   const { slug } = useParams();
   const service = slug ? getServiceBySlug(slug) : undefined;
+  const copy = slug ? getServiceCopy(slug) : undefined;
+  const [heroSrc, setHeroSrc] = useState(service ? SERVICE_IMAGE(service.slug) : '');
 
   useEffect(() => {
     document.title = service
       ? `${service.title} — A3 Studios`
       : 'Service not found — A3 Studios';
+  }, [service]);
+
+  useEffect(() => {
+    if (service) setHeroSrc(SERVICE_IMAGE(service.slug));
   }, [service]);
 
   if (!service) {
@@ -28,12 +36,14 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <section
-        className="service-hero"
-        style={{
-          background: `radial-gradient(120% 130% at 18% 8%, ${service.accent}55, transparent 55%), linear-gradient(120deg, ${service.accent}33, #08080a 70%)`,
-        }}
-      >
+      <section className="service-hero service-hero--image">
+        <img
+          className="service-hero-img"
+          src={heroSrc}
+          alt=""
+          aria-hidden
+          onError={() => setHeroSrc(serviceArtworkUri(service.title, 'A3 Production', service.accent))}
+        />
         <div className="service-hero-scrim" />
         <div className="container service-hero-inner">
           <Link className="service-back link" to="/rates">
@@ -41,6 +51,7 @@ export default function ServiceDetail() {
           </Link>
           <div className="kicker" style={{ marginTop: 20 }}>A3 Production</div>
           <h1>{service.title}</h1>
+          {copy && <p className="service-tagline">{copy.tagline}</p>}
           <div className="service-price-block">
             <span className="service-price-label">Price per video</span>
             <span className={`service-price${service.priceUsd === null ? ' service-price--probono' : ''}`}>
@@ -57,6 +68,52 @@ export default function ServiceDetail() {
           </div>
         </div>
       </section>
+
+      {copy && (
+        <section className="section-tight">
+          <div className="container service-prose-wrap">
+            {copy.sections.map((section, i) => (
+              <Reveal key={section.title} className="service-prose-block" delay={i * 30}>
+                <h2>{section.title}</h2>
+                {section.paragraphs.map((p) => (
+                  <p key={p.slice(0, 48)}>{p}</p>
+                ))}
+              </Reveal>
+            ))}
+
+            <Reveal className="service-prose-block" delay={120}>
+              <h2>Key benefits</h2>
+              <ul className="service-benefits">
+                {copy.benefits.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal className="service-prose-block" delay={150}>
+              <h2>Who this is for</h2>
+              <ul className="service-ideal">
+                {copy.idealFor.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </Reveal>
+
+            <Reveal className="service-prose-block" delay={180}>
+              <h2>Our process</h2>
+              <div className="rate-steps">
+                {copy.process.map((step, idx) => (
+                  <div className="rate-step" key={step.step}>
+                    <div className="rate-step-num">{String(idx + 1).padStart(2, '0')}</div>
+                    <h3>{step.step}</h3>
+                    <p>{step.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section className="section-tight">
         <div className="container">

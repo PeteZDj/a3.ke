@@ -6,6 +6,7 @@
   "description": "A3 Studios — Kenyan production house. Films, commercial video & sport coverage. Cinematic Netflix-style showcase site.",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-artwork.mjs",
     "build": "vite build",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "preview": "vite preview"

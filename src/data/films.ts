@@ -1,9 +1,8 @@
 import type { Film } from '../types';
 
 // A3 Studios catalogue. Original Kenyan cinema — bold, contemporary, rooted in place.
-// Posters live in /public/images/posters/<slug>.jpg, backdrops in /public/images/backdrops/<slug>.jpg.
-// If an image is missing the UI falls back to a tasteful gradient poster, so the
-// catalogue always renders cleanly.
+// Posters live in /public/images/posters/<slug>.svg (generated at build), backdrops in /public/images/backdrops/<slug>.svg.
+// Real photos can replace SVGs at the same path. Missing files fall back to inline artwork in the UI.
 
 export const films: Film[] = [
   {

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b91c1c"/>
+      <stop offset="32%" stop-color="#b91c1cbb"/>
+      <stop offset="68%" stop-color="#121218"/>
+      <stop offset="100%" stop-color="#060608"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="22%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="55%" stop-color="#b91c1c44"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0%" y1="100%" x2="85%" y2="0%">
+      <stop offset="0%" stop-color="#b91c1c66"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.75)"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.09"/></feComponentTransfer>
+    </filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="40"/></filter>
+  </defs>
+  <rect width="600" height="900" fill="url(#bg)"/>
+  <ellipse cx="468" cy="180" rx="180" ry="140" fill="#b91c1c" opacity="0.22" filter="url(#blur)"/>
+  <ellipse cx="90" cy="675" rx="120" ry="100" fill="#b91c1c" opacity="0.14" filter="url(#blur)"/>
+  <rect width="600" height="900" fill="url(#glow)"/>
+  <rect width="600" height="900" fill="url(#beam)" opacity="0.5"/>
+  <rect x="12" y="24" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="88.28571428571429" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="152.57142857142858" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="216.8571428571429" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="281.14285714285717" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="345.42857142857144" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="409.7142857142858" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="474.00000000000006" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <line x1="36" y1="648" x2="84" y2="648" stroke="#b91c1c" stroke-width="3" opacity="0.9"/>
+  <rect width="600" height="900" fill="url(#floor)"/>
+  <rect width="600" height="900" filter="url(#grain)" opacity="0.4"/>
+  <text x="36" y="676" fill="rgba(255,255,255,0.7)" font-family="system-ui,sans-serif" font-size="11" letter-spacing="0.32em" font-weight="600">COMMERCIAL</text>
+  <text x="36" y="716" fill="#ffffff" font-family="Georgia,serif" font-size="48" font-weight="700" letter-spacing="-0.025em"><tspan x="36" dy="0">Equity Bank —</tspan><tspan x="36" dy="54">Built Here</tspan></text>
+  <text x="36" y="860" fill="rgba(255,255,255,0.5)" font-family="system-ui,sans-serif" font-size="11" letter-spacing="0.14em">A3 STUDIOS · 2024</text>
+</svg>

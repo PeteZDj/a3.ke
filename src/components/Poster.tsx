@@ -14,7 +14,9 @@ export function Poster({ film, className }: { film: Film; className?: string }) 
       alt={`${film.title} poster`}
       loading="lazy"
       onError={() => {
-        setSrc((current) => (current.endsWith('.jpg') ? artworkDataUri(film, 'poster') : current));
+        setSrc((current) =>
+          current.includes('/images/posters/') ? artworkDataUri(film, 'poster') : current,
+        );
       }}
     />
   );

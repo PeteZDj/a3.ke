@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="32%" stop-color="#0284c7bb"/>
+      <stop offset="68%" stop-color="#121218"/>
+      <stop offset="100%" stop-color="#060608"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="22%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="55%" stop-color="#0284c744"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0%" y1="100%" x2="85%" y2="0%">
+      <stop offset="0%" stop-color="#0284c766"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.75)"/>
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.09"/></feComponentTransfer>
+    </filter>
+    <filter id="blur"><feGaussianBlur stdDeviation="40"/></filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <ellipse cx="1497.6000000000001" cy="216" rx="320" ry="240" fill="#0284c7" opacity="0.22" filter="url(#blur)"/>
+  <ellipse cx="288" cy="810" rx="200" ry="160" fill="#0284c7" opacity="0.14" filter="url(#blur)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <rect width="1920" height="1080" fill="url(#beam)" opacity="0.5"/>
+  <rect x="12" y="24" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="101.14285714285714" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="178.28571428571428" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="255.42857142857142" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="332.57142857142856" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="409.71428571428567" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="486.85714285714283" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="564" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="641.1428571428571" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="718.2857142857142" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="795.4285714285713" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="872.5714285714286" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="949.7142857142857" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="1026.8571428571427" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/>
+  <line x1="96" y1="558.4" x2="144" y2="558.4" stroke="#0284c7" stroke-width="3" opacity="0.9"/>
+  <rect width="1920" height="1080" fill="url(#floor)"/>
+  <rect width="1920" height="1080" filter="url(#grain)" opacity="0.4"/>
+  <text x="96" y="586.4" fill="rgba(255,255,255,0.7)" font-family="system-ui,sans-serif" font-size="13" letter-spacing="0.32em" font-weight="600">COMMERCIAL</text>
+  <text x="96" y="626.4" fill="#ffffff" font-family="Georgia,serif" font-size="84" font-weight="700" letter-spacing="-0.025em"><tspan x="96" dy="0">UNICEF — Every Child</tspan><tspan x="96" dy="92">Learns</tspan></text>
+  <text x="96" y="1028" fill="rgba(255,255,255,0.5)" font-family="system-ui,sans-serif" font-size="14" letter-spacing="0.14em">A3 STUDIOS · 2023</text>
+</svg>

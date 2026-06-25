@@ -21,5 +21,5 @@ export interface Film {
   trailerNote?: string;  // shown in the trailer modal
 }
 
-export const POSTER = (slug: string) => `/images/posters/${slug}.jpg`;
-export const BACKDROP = (slug: string) => `/images/backdrops/${slug}.jpg`;
+export const POSTER = (slug: string) => `/images/posters/${slug}.svg`;
+export const BACKDROP = (slug: string) => `/images/backdrops/${slug}.svg`;

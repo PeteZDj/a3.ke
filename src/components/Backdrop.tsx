@@ -22,8 +22,8 @@ export function Backdrop({
       alt={alt ?? `${film.title} still`}
       onError={() => {
         setSrc((current) => {
-          if (current.endsWith('.jpg') && current.includes('/backdrops/')) return POSTER(film.slug);
-          if (current.endsWith('.jpg')) return artworkDataUri(film, 'backdrop');
+          if (current.includes('/images/backdrops/')) return POSTER(film.slug);
+          if (current.includes('/images/posters/')) return artworkDataUri(film, 'backdrop');
           return current;
         });
       }}
