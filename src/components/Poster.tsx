@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Film } from '../types';
-import { POSTER } from '../types';
+import { POSTER, POSTER_SVG } from '../types';
 import { artworkDataUri } from '../lib/artwork';
 
 // Renders a film poster; tries a photo asset first, then cinematic SVG artwork.
@@ -14,9 +14,11 @@ export function Poster({ film, className }: { film: Film; className?: string }) 
       alt={`${film.title} poster`}
       loading="lazy"
       onError={() => {
-        setSrc((current) =>
-          current.includes('/images/posters/') ? artworkDataUri(film, 'poster') : current,
-        );
+        setSrc((current) => {
+          if (current.endsWith('.webp')) return POSTER_SVG(film.slug);
+          if (current.endsWith('.svg')) return artworkDataUri(film, 'poster');
+          return current;
+        });
       }}
     />
   );
