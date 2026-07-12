@@ -27,10 +27,21 @@ export function Top10Row({ title, films }: { title: string; films: Film[] }) {
       <div className="row-scroller top10-scroller" ref={ref}>
         {top.map((f, i) => (
           <Link to={`/film/${f.slug}`} className="top10-item" key={f.slug} aria-label={`#${i + 1} ${f.title}`}>
-            <span className="top10-num">{i + 1}</span>
-            <div className="top10-poster">
-              <Poster film={f} />
-              <span className="card-rating">{f.rating}</span>
+            <div className="top10-rank">
+              <span className="top10-num">{i + 1}</span>
+              <div className="top10-poster">
+                <Poster film={f} />
+                <span className="card-rating">{f.rating}</span>
+              </div>
+            </div>
+            <div className="top10-info">
+              <div className="top10-title">{f.title}</div>
+              <div className="top10-meta">
+                <span>{f.year}</span>
+                <span className="pip" />
+                <span>{f.runtime}</span>
+              </div>
+              <div className="top10-genres">{f.genres.slice(0, 2).join(' · ')}</div>
             </div>
           </Link>
         ))}

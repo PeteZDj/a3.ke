@@ -8,10 +8,12 @@ export function Backdrop({
   film,
   className,
   alt,
+  loading,
 }: {
   film: Film;
   className?: string;
   alt?: string;
+  loading?: 'lazy' | 'eager';
 }) {
   const [src, setSrc] = useState(BACKDROP(film.slug));
 
@@ -20,6 +22,8 @@ export function Backdrop({
       className={className}
       src={src}
       alt={alt ?? `${film.title} still`}
+      loading={loading}
+      decoding="async"
       onError={() => {
         setSrc((current) => {
           if (current.endsWith('.webp') && current.includes('/images/backdrops/')) {

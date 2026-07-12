@@ -24,8 +24,56 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Branded preloader — shown instantly before the React app mounts -->
+    <style>
+      #a3-loader {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px;
+        background: radial-gradient(120% 100% at 50% 0%, #14060a 0%, #060608 60%);
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #a3-loader.a3-loader--done { opacity: 0; visibility: hidden; }
+      .a3l-mark { position: relative; width: 78px; height: 78px; animation: a3lPulse 1.6s ease-in-out infinite; }
+      .a3l-mark svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 8px 30px rgba(229,9,20,0.55)); }
+      .a3l-ring {
+        position: absolute; inset: -14px; border-radius: 22px;
+        border: 2px solid rgba(229,9,20,0.18); border-top-color: #e50914;
+        animation: a3lSpin 0.9s linear infinite;
+      }
+      .a3l-word {
+        font-family: 'Sora', system-ui, sans-serif; font-weight: 800; letter-spacing: 0.42em;
+        font-size: 13px; text-transform: uppercase; padding-left: 0.42em;
+        background: linear-gradient(90deg, #ff4d57, #e50914); -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      .a3l-bar { width: 168px; height: 3px; border-radius: 3px; background: rgba(255,255,255,0.08); overflow: hidden; }
+      .a3l-bar span { display: block; width: 40%; height: 100%; border-radius: 3px; background: linear-gradient(90deg, #ff4d57, #e50914); animation: a3lBar 1.15s ease-in-out infinite; }
+      @keyframes a3lPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+      @keyframes a3lSpin { to { transform: rotate(360deg); } }
+      @keyframes a3lBar { 0% { transform: translateX(-120%); } 100% { transform: translateX(320%); } }
+      @media (prefers-reduced-motion: reduce) {
+        .a3l-mark, .a3l-ring, .a3l-bar span { animation: none; }
+      }
+    </style>
   </head>
   <body>
+    <div id="a3-loader" role="status" aria-label="Loading A3 Studios">
+      <div class="a3l-mark">
+        <div class="a3l-ring"></div>
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="a3lg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff4d57" />
+              <stop offset="100%" stop-color="#b20710" />
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="22" fill="url(#a3lg)" />
+          <path d="M40 33 L70 50 L40 67 Z" fill="#fff" />
+        </svg>
+      </div>
+      <div class="a3l-word">A3 Studios</div>
+      <div class="a3l-bar"><span></span></div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

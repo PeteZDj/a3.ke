@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import type { Film } from '../types';
 import { Poster } from './Poster';
+import { Backdrop } from './Backdrop';
 import { Play, Info, Plus } from './Icons';
 
 function StatusFlag({ film }: { film: Film }) {
@@ -19,25 +20,50 @@ export function FilmCard({ film, onPlay }: { film: Film; onPlay?: (f: Film) => v
         <Poster film={film} />
         <span className="card-rating">{film.rating}</span>
         <StatusFlag film={film} />
-        <div className="card-hover">
-          <div className="card-hover-actions">
-            <button
-              className="co-btn play"
-              aria-label={`Watch ${film.title} trailer`}
-              onClick={(e) => { e.preventDefault(); onPlay?.(film); }}
-            >
-              <Play />
-            </button>
-            <button
-              className="co-btn"
-              aria-label={`More about ${film.title}`}
-              onClick={(e) => { e.preventDefault(); navigate(`/film/${film.slug}`); }}
-            >
-              <Info />
-            </button>
-            <button className="co-btn" aria-label="Add to my list" onClick={(e) => e.preventDefault()}>
-              <Plus />
-            </button>
+
+        {/* Netflix-style expanded preview shown on hover */}
+        <div className="card-preview">
+          <div className="card-preview-media">
+            <Backdrop film={film} className="card-preview-img" alt={`${film.title} preview`} loading="lazy" />
+            <span className="card-preview-trailer"><Play /> Trailer</span>
+          </div>
+          <div className="card-preview-body">
+            <div className="card-preview-actions">
+              <button
+                className="co-btn play"
+                aria-label={`Watch ${film.title} trailer`}
+                onClick={(e) => { e.preventDefault(); onPlay?.(film); }}
+              >
+                <Play />
+              </button>
+              <button
+                className="co-btn"
+                aria-label={`More about ${film.title}`}
+                onClick={(e) => { e.preventDefault(); navigate(`/film/${film.slug}`); }}
+              >
+                <Info />
+              </button>
+              <button className="co-btn" aria-label="Add to my list" onClick={(e) => e.preventDefault()}>
+                <Plus />
+              </button>
+            </div>
+            <div className="card-preview-title">{film.title}</div>
+            <div className="card-preview-meta">
+              <span className="tag">{film.year}</span>
+              <span className="pip" />
+              <span>{film.rating}</span>
+              <span className="pip" />
+              <span>{film.runtime}</span>
+              <span className="pip" />
+              <span className="card-hd">HD</span>
+            </div>
+            <div className="card-preview-genres">
+              {film.genres.slice(0, 3).map((g) => (
+                <span className="card-chip" key={g}>{g}</span>
+              ))}
+            </div>
+            <p className="card-preview-logline">{film.logline}</p>
+            <div className="card-preview-dir"><span>Dir.</span> {film.director}</div>
           </div>
         </div>
       </div>

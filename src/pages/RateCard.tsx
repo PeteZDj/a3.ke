@@ -58,13 +58,24 @@ export default function RateCard() {
             {websiteServices.map((svc, i) => (
               <Reveal key={svc.id} delay={i * 40}>
                 <Link to={servicePath(svc.slug)} className="rate-service-card rate-service-card--link">
+                  <div className="rate-service-media">
+                    <img
+                      src={`/images/services/${svc.slug}.webp`}
+                      alt={svc.title}
+                      loading="lazy"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (img.src.endsWith('.webp')) img.src = `/images/services/${svc.slug}.svg`;
+                      }}
+                    />
+                    <span className="rate-service-media-price" style={{ borderColor: svc.accent }}>
+                      {svc.priceLabel}
+                    </span>
+                  </div>
                   <div className="rate-service-accent" style={{ background: svc.accent }} aria-hidden />
                   <div className="rate-service-body">
                     <div className="rate-service-head">
                       <h3>{svc.title}</h3>
-                      <span className={`rate-service-price${svc.priceUsd === null ? ' rate-service-price--probono' : ''}`}>
-                        {svc.priceLabel}
-                      </span>
                     </div>
                     <p>{svc.description}</p>
                     <span className="rate-service-more">View details →</span>
