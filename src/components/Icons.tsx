@@ -107,3 +107,27 @@ export const Lock = (p: SVGProps<SVGSVGElement>) => (
 export const Sparkles = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base(p)} fill="currentColor" stroke="none"><path d="M12 2.5 13.7 8 19 9.7 13.7 11.4 12 17l-1.7-5.6L5 9.7 10.3 8 12 2.5Z" /><path d="M19 14l.8 2.6L22 17.5l-2.2.9L19 21l-.8-2.6L16 17.5l2.2-.9L19 14Z" /><path d="M5.5 13l.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6.6-2Z" /></svg>
 );
+export const Bell = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><path d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6Z" /><path d="M10 19a2 2 0 0 0 4 0" /></svg>
+);
+export const User = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><circle cx="12" cy="8" r="4" /><path d="M4 20a8 8 0 0 1 16 0" /></svg>
+);
+export const LogOut = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><path d="M15 4h3a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3" /><path d="M10 12H3M6 8l-4 4 4 4" /></svg>
+);
+export const Wallet = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><path d="M3 7a2 2 0 0 1 2-2h12v3M3 7v10a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-3M3 7h16a1 1 0 0 1 1 1v3" /><circle cx="17" cy="13" r="1.2" fill="currentColor" stroke="none" /></svg>
+);
+export const TrendingUp = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><path d="m3 16 5-5 4 4 8-8" /><path d="M15 7h6v6" /></svg>
+);
+export const PieChart = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><path d="M12 3a9 9 0 1 0 9 9h-9V3Z" /><path d="M12 3v9h9" /></svg>
+);
+export const CircleCheck = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)} fill="currentColor" stroke="none"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1 14.4-4-4L8.4 11l2.6 2.6L15.6 9 17 10.4l-6 6Z" /></svg>
+);
+export const CircleDot = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none" /></svg>
+);

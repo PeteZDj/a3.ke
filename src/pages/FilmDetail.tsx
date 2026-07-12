@@ -7,6 +7,7 @@ import { Backdrop } from '../components/Backdrop';
 import { FilmRow } from '../components/FilmRow';
 import { TrailerModal } from '../components/TrailerModal';
 import { WatchModal } from '../components/WatchModal';
+import { FilmFinance } from '../components/FilmFinance';
 import { PersonChip } from '../components/PersonAvatar';
 import { Reveal } from '../components/Reveal';
 import { Laurels } from '../components/Laurels';
@@ -227,6 +228,8 @@ export default function FilmDetail() {
           </div>
         </div>
       </section>
+
+      {film.kind !== 'Sport' && <FilmFinance film={film} />}
 
       {related.length > 0 && (
         <section className="section-tight" style={{ paddingBottom: 40 }}>

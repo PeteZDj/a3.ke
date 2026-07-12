@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Search, Menu, Close, Sparkles } from './Icons';
+import { Search, Menu, Close, Sparkles, LogOut } from './Icons';
 import { Logo } from './Logo';
+import { NotificationsBell, AccountButton } from './NavAccount';
+import { useAuth } from '../context/AuthContext';
 
 interface NavItem { to: string; label: string; end?: boolean; ai?: boolean }
 
@@ -27,6 +29,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const loc = useLocation();
+  const { user, signOut, openAuth } = useAuth();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -67,8 +70,8 @@ export function Navbar() {
             <Link to="/films" className="icon-btn desktop-only" aria-label="Browse films">
               <Search />
             </Link>
-            <Link to="/rates" className="btn btn-ghost btn-sm desktop-only">Hire Us</Link>
-            <Link to="/films" className="btn btn-gold btn-sm desktop-only">Watch Now</Link>
+            <NotificationsBell />
+            <AccountButton />
             <button className="icon-btn nav-toggle" aria-label="Open menu" onClick={() => setOpen(true)}>
               <Menu />
             </button>
@@ -98,6 +101,20 @@ export function Navbar() {
             ))}
             <Link to="/rates" className="btn btn-ghost" style={{ marginTop: 18 }}>Hire Us</Link>
             <Link to="/films" className="btn btn-gold" style={{ marginTop: 12 }}>Watch Now</Link>
+            {user ? (
+              <div className="drawer-acct">
+                <div className="nav-avatar">{user.name.split(' ').map((n) => n[0]).slice(0, 2).join('').toUpperCase()}</div>
+                <div className="drawer-acct-info">
+                  <strong>{user.name}</strong>
+                  <button className="linkish" onClick={() => { setOpen(false); signOut(); }}><LogOut style={{ width: 14, height: 14, verticalAlign: '-2px' }} /> Sign out</button>
+                </div>
+              </div>
+            ) : (
+              <div className="drawer-auth">
+                <button className="btn btn-outline" onClick={() => { setOpen(false); openAuth('signin'); }}>Sign in</button>
+                <button className="btn btn-gold" onClick={() => { setOpen(false); openAuth('signup'); }}>Sign up</button>
+              </div>
+            )}
           </aside>
         </>
       )}

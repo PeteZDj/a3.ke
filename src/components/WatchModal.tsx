@@ -3,6 +3,7 @@ import type { Film } from '../types';
 import { Backdrop } from './Backdrop';
 import { Play, Close, Mail, Lock, Check } from './Icons';
 import { filmAccess } from '../data/filmMeta';
+import { useAuth } from '../context/AuthContext';
 
 const KEY = 'a3-unlocked';
 function getUnlocked(): string[] {
@@ -18,6 +19,7 @@ const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 type Step = 'gate' | 'pay' | 'unlocked' | 'notified';
 
 export function WatchModal({ film, onClose }: { film: Film | null; onClose: () => void }) {
+  const { notify } = useAuth();
   const [step, setStep] = useState<Step>('gate');
   const [email, setEmail] = useState('');
   const [err, setErr] = useState('');
@@ -37,13 +39,29 @@ export function WatchModal({ film, onClose }: { film: Film | null; onClose: () =
   const access = filmAccess(film);
   const released = film.status === 'Now Streaming';
 
-  const unlock = () => { addUnlocked(film.slug); setStep('unlocked'); };
+  const unlock = () => {
+    addUnlocked(film.slug);
+    setStep('unlocked');
+    notify({
+      kind: 'receipt',
+      title: `You unlocked ${film.title}`,
+      body: access.free ? 'Added to your library — enjoy the film.' : 'Rental active — stream in HD for 48 hours.',
+      href: `/film/${film.slug}`,
+    });
+  };
 
   const submitFree = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validEmail(email)) { setErr('Please enter a valid email.'); return; }
     setBusy(true);
-    setTimeout(() => { setBusy(false); released ? unlock() : setStep('notified'); }, 650);
+    setTimeout(() => {
+      setBusy(false);
+      if (released) { unlock(); }
+      else {
+        setStep('notified');
+        notify({ kind: 'premiere', title: `You're on the list for ${film.title}`, body: 'We\u2019ll notify you the moment it premieres on A3.', href: `/film/${film.slug}` });
+      }
+    }, 650);
   };
   const submitPay = (e: React.FormEvent) => {
     e.preventDefault();

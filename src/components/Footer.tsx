@@ -2,10 +2,18 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
 import { Instagram, Youtube, Twitter, Linkedin, ArrowRight, Pin } from './Icons';
+import { useAuth } from '../context/AuthContext';
 
 export function Footer() {
   const year = new Date().getFullYear();
   const [joined, setJoined] = useState(false);
+  const { notify, user } = useAuth();
+
+  const onSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    setJoined(true);
+    if (user) notify({ kind: 'system', title: 'Subscribed to A3 updates', body: 'You\u2019ll get premieres, trailers and festival news by email.' });
+  };
 
   return (
     <footer className="footer">
@@ -19,7 +27,7 @@ export function Footer() {
           {joined ? (
             <div className="form-success" style={{ minWidth: 280 }}>You’re on the list. Karibu to A3.</div>
           ) : (
-            <form className="news-form" onSubmit={(e) => { e.preventDefault(); setJoined(true); }}>
+            <form className="news-form" onSubmit={onSubscribe}>
               <input type="email" required placeholder="you@example.com" aria-label="Email address" />
               <button type="submit" className="btn btn-gold">Subscribe <ArrowRight style={{ width: 17, height: 17 }} /></button>
             </form>
