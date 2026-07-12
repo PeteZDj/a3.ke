@@ -4,6 +4,7 @@ import { getPerson, personFilmography, personCreditCount, people } from '../data
 import { PORTRAIT } from '../types';
 import { Reveal } from '../components/Reveal';
 import { FilmCard } from '../components/FilmCard';
+import { PersonFinance } from '../components/PersonFinance';
 import { ArrowRight, Pin, Film as FilmIcon, Star } from '../components/Icons';
 
 export default function PersonDetail() {
@@ -69,6 +70,8 @@ export default function PersonDetail() {
           </div>
         </section>
       )}
+
+      <PersonFinance person={person} />
 
       {others.length > 0 && (
         <section className="section-tight" style={{ paddingBottom: 64 }}>

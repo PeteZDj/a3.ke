@@ -101,6 +101,8 @@ while ((m = blockRe.exec(filmsTs)) !== null) {
 const services = [
   { slug: 'dp-movies', title: 'DP / Movie Gigs', accent: '#e8b23a' },
   { slug: 'commercial', title: 'Commercial Videos', accent: '#3b82f6' },
+  { slug: 'ai-commercial', title: 'AI Commercials', accent: '#22d3ee' },
+  { slug: 'animation', title: 'Animation', accent: '#a78bfa' },
   { slug: 'music-videos', title: 'Music Videos', accent: '#db2777' },
   { slug: 'real-estate', title: 'Real Estate Videos', accent: '#16a34a' },
   { slug: 'events', title: 'Event Videos', accent: '#ea580c' },

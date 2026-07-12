@@ -17,6 +17,15 @@ const studioGallery = [
   { src: '/images/studio/studio-06.webp', caption: 'Broadcast gallery' },
 ];
 
+const officeGallery = [
+  { src: '/images/office/office-01.webp', caption: 'Reception & lounge' },
+  { src: '/images/office/office-02.webp', caption: 'The writers\u2019 room' },
+  { src: '/images/office/office-03.webp', caption: 'Open-plan studio floor' },
+  { src: '/images/office/office-04.webp', caption: 'Meeting & pitch room' },
+  { src: '/images/office/office-05.webp', caption: 'The creative lounge' },
+  { src: '/images/office/office-06.webp', caption: 'Colour & grading bay' },
+];
+
 const team = [
   { name: 'Pete Njagi', role: 'Studio Head', accent: '#3b82f6' },
   { name: 'Baraka Kipchoge', role: 'Head of Film', accent: '#f59e0b' },
@@ -151,6 +160,53 @@ export default function About() {
         images={studioGallery}
         note="A3's sound stage and post-production house in Nairobi's Industrial Area."
       />
+
+      <StockGallery
+        kicker="Our office"
+        title="Come say karibu"
+        images={officeGallery}
+        note="Our home base at Kisima Apartments, Pangani — where the writing, pitching and planning happen."
+      />
+
+      {/* Visit us — map + address */}
+      <section className="section-tight">
+        <div className="container">
+          <Reveal className="visit">
+            <div className="visit-info">
+              <div className="kicker">Visit us</div>
+              <h2 style={{ fontSize: 'clamp(24px,3.4vw,38px)', margin: '12px 0 16px' }}>A3 Studios HQ</h2>
+              <p className="visit-addr">
+                <strong>Kisima Apartments</strong><br />
+                Pangani, Nairobi<br />
+                Kenya
+              </p>
+              <p style={{ color: 'var(--ink-soft)', marginBottom: 20 }}>
+                Drop in for a coffee and a pitch. We&rsquo;re a short hop from the CBD — parking on site,
+                and the edit suites are always running.
+              </p>
+              <div className="visit-actions">
+                <a
+                  className="btn btn-gold"
+                  href="https://www.google.com/maps/search/?api=1&query=Kisima+Apartments+Pangani+Nairobi"
+                  target="_blank" rel="noopener noreferrer"
+                >
+                  Get directions <ArrowRight style={{ width: 17, height: 17 }} />
+                </a>
+                <Link className="btn btn-outline" to="/contact">Contact the studio</Link>
+              </div>
+            </div>
+            <div className="visit-map">
+              <iframe
+                title="A3 Studios — Kisima Apartments, Pangani, Nairobi"
+                src="https://www.google.com/maps?q=Kisima%20Apartments%2C%20Pangani%2C%20Nairobi&output=embed"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <section className="section-tight">
         <div className="container">

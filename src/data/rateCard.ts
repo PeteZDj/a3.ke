@@ -60,6 +60,32 @@ export const websiteServices: WebsiteService[] = [
     turnaround: 'Rough cut in 5 days; final delivery in 10 business days after picture lock.',
   },
   {
+    id: 'ai-commercial',
+    slug: 'ai-commercial',
+    title: 'AI Commercials',
+    priceUsd: 900,
+    priceLabel: '$900',
+    description:
+      'AI-assisted brand films \u2014 generative concepts, synthetic scenes and rapid variations for launches and social. Cinematic results at a fraction of a full shoot.',
+    accent: '#22d3ee',
+    deliverables: ['AI hero film (30\u201360s)', '5\u00d7 platform variations', 'Generated + graded master', 'Concept board & prompt kit'],
+    typicalScope: 'Concept-led; part generative, part live where needed. Ideal for tight timelines and big ideas on a lean budget.',
+    turnaround: 'First look in 3 days; final delivery in 7 business days.',
+  },
+  {
+    id: 'animation',
+    slug: 'animation',
+    title: 'Animation',
+    priceUsd: 1_400,
+    priceLabel: '$1,400',
+    description:
+      '2D, 3D and motion-graphics animation \u2014 explainers, title sequences, animated ads and short films from the A3 AI Lab and design team.',
+    accent: '#a78bfa',
+    deliverables: ['Animated film (up to 90s)', 'Storyboard & style frames', 'Source project + master', 'Looping social cutdowns'],
+    typicalScope: 'Style-frame first; 2D/3D or hybrid AI animation. Music & VO licensing quoted separately.',
+    turnaround: 'Storyboard in 4 days; final animation in 12\u201318 business days.',
+  },
+  {
     id: 'music-video',
     slug: 'music-videos',
     title: 'Music Videos',

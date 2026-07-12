@@ -3,24 +3,33 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Search, Menu, Close, Sparkles, LogOut } from './Icons';
 import { Logo } from './Logo';
 import { NotificationsBell, AccountButton } from './NavAccount';
+import { SearchModal } from './SearchModal';
 import { useAuth } from '../context/AuthContext';
 
 interface NavItem { to: string; label: string; end?: boolean; ai?: boolean }
 
 const primary: NavItem[] = [
   { to: '/films', label: 'Films' },
+  { to: '/animation', label: 'Animation', ai: true },
+  { to: '/series', label: 'Series & Docs' },
+  { to: '/commercial', label: 'Commercial' },
+  { to: '/sport', label: 'Sport' },
+  { to: '/about', label: 'Studio' },
+  { to: '/blog', label: 'Journal' },
+];
+
+// The drawer (mobile / tablet) lists everything.
+const drawerLinks: NavItem[] = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/films', label: 'Films' },
+  { to: '/animation', label: 'Animation', ai: true },
   { to: '/ai-films', label: 'AI Originals', ai: true },
   { to: '/series', label: 'Series & Docs' },
   { to: '/commercial', label: 'Commercial' },
   { to: '/sport', label: 'Sport' },
   { to: '/people', label: 'People' },
   { to: '/about', label: 'Studio' },
-];
-
-// The drawer (mobile / tablet) lists everything.
-const drawerLinks: NavItem[] = [
-  { to: '/', label: 'Home', end: true },
-  ...primary,
+  { to: '/blog', label: 'Journal' },
   { to: '/rates', label: 'Rates' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -28,6 +37,7 @@ const drawerLinks: NavItem[] = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const loc = useLocation();
   const { user, signOut, openAuth } = useAuth();
 
@@ -67,10 +77,11 @@ export function Navbar() {
           </nav>
 
           <div className="nav-right">
-            <Link to="/films" className="icon-btn desktop-only" aria-label="Browse films">
+            <button className="icon-btn" aria-label="Search" onClick={() => setSearchOpen(true)}>
               <Search />
-            </Link>
+            </button>
             <NotificationsBell />
+            <Link to="/rates" className="btn btn-gold btn-sm desktop-only">Hire Us</Link>
             <AccountButton />
             <button className="icon-btn nav-toggle" aria-label="Open menu" onClick={() => setOpen(true)}>
               <Menu />
@@ -78,6 +89,8 @@ export function Navbar() {
           </div>
         </div>
       </header>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {open && (
         <>
@@ -99,8 +112,10 @@ export function Navbar() {
                 {l.ai && <Sparkles />} {l.label}
               </NavLink>
             ))}
-            <Link to="/rates" className="btn btn-ghost" style={{ marginTop: 18 }}>Hire Us</Link>
-            <Link to="/films" className="btn btn-gold" style={{ marginTop: 12 }}>Watch Now</Link>
+            <button className="btn btn-outline" style={{ marginTop: 18 }} onClick={() => { setOpen(false); setSearchOpen(true); }}>
+              <Search style={{ width: 16, height: 16 }} /> Search
+            </button>
+            <Link to="/rates" className="btn btn-gold" style={{ marginTop: 12 }}>Hire Us</Link>
             {user ? (
               <div className="drawer-acct">
                 <div className="nav-avatar">{user.name.split(' ').map((n) => n[0]).slice(0, 2).join('').toUpperCase()}</div>
@@ -110,10 +125,7 @@ export function Navbar() {
                 </div>
               </div>
             ) : (
-              <div className="drawer-auth">
-                <button className="btn btn-outline" onClick={() => { setOpen(false); openAuth('signin'); }}>Sign in</button>
-                <button className="btn btn-gold" onClick={() => { setOpen(false); openAuth('signup'); }}>Sign up</button>
-              </div>
+              <button className="btn btn-outline" style={{ marginTop: 12 }} onClick={() => { setOpen(false); openAuth('signin'); }}>Sign in</button>
             )}
           </aside>
         </>

@@ -12,10 +12,13 @@ import Contact from './pages/Contact';
 import Commercial from './pages/Commercial';
 import Sport from './pages/Sport';
 import AiFilms from './pages/AiFilms';
+import Animation from './pages/Animation';
 import People from './pages/People';
 import PersonDetail from './pages/PersonDetail';
 import RateCard from './pages/RateCard';
 import ServiceDetail from './pages/ServiceDetail';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 function NotFound() {
   return (
@@ -42,8 +45,11 @@ export default function App() {
           <Route path="/commercial" element={<Commercial />} />
           <Route path="/sport" element={<Sport />} />
           <Route path="/ai-films" element={<AiFilms />} />
+          <Route path="/animation" element={<Animation />} />
           <Route path="/people" element={<People />} />
           <Route path="/person/:slug" element={<PersonDetail />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/about" element={<About />} />
           <Route path="/rates" element={<RateCard />} />
           <Route path="/rates/:slug" element={<ServiceDetail />} />

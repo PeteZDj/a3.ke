@@ -7,7 +7,7 @@ import { TrailerModal } from '../components/TrailerModal';
 import { Reveal } from '../components/Reveal';
 import { StatsBar, Capabilities } from '../components/PageExtras';
 import { Backdrop } from '../components/Backdrop';
-import { Sparkles, Play, Info, Layers, Camera, Film } from '../components/Icons';
+import { Sparkles, Play, Info, Layers, Camera, Film as FilmIcon } from '../components/Icons';
 
 export default function AiFilms() {
   const [trailer, setTrailer] = useState<Film | null>(null);
@@ -74,7 +74,7 @@ export default function AiFilms() {
           { icon: Sparkles, title: 'Generative imagery', copy: 'Every frame is generated with the latest image and video models, then curated by our directors for tone and truth.' },
           { icon: Layers, title: 'Art direction first', copy: 'We lock a look — palette, world, character — before a single frame is made, so a whole film stays visually cohesive.' },
           { icon: Camera, title: 'Cinematic grammar', copy: 'Shot design, pacing and sound are handled the way we cut any A3 film. The tools are new; the craft isn\'t.' },
-          { icon: Film, title: 'Kenyan stories', copy: 'AI lets us build worlds — floating Mombasa, neon savannahs — that put African imagination centre-frame.' },
+          { icon: FilmIcon, title: 'Kenyan stories', copy: 'AI lets us build worlds — floating Mombasa, neon savannahs — that put African imagination centre-frame.' },
         ]}
       />
 

@@ -57,12 +57,13 @@ export function Hero({ films, onPlay }: { films: Film[]; onPlay: (f: Film) => vo
             </div>
             <p className="hero-logline">{film.logline}</p>
             <div className="hero-actions">
-              <Link className="btn btn-gold" to={`/film/${film.slug}`}>
+              <button className="hero-play" onClick={() => onPlay(film)} aria-label={`Watch the ${film.title} trailer`}>
+                <span className="hero-play-btn"><Play /></span>
+                <span className="hero-play-label">Watch the Trailer</span>
+              </button>
+              <Link className="btn btn-gold hero-watchnow" to={`/film/${film.slug}`}>
                 <Play /> Watch Now
               </Link>
-              <button className="btn btn-primary" onClick={() => onPlay(film)}>
-                <Play /> Watch Trailer
-              </button>
               <Link className="btn btn-ghost hide-sm" to={`/film/${film.slug}`}>
                 <Info /> More Info
               </Link>

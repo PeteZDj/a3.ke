@@ -89,10 +89,7 @@ export function AccountButton() {
 
   if (!user) {
     return (
-      <>
-        <button className="btn btn-ghost btn-sm desktop-only" onClick={() => openAuth('signin')}>Sign in</button>
-        <button className="btn btn-gold btn-sm desktop-only" onClick={() => openAuth('signup')}>Sign up</button>
-      </>
+      <button className="btn btn-outline btn-sm desktop-only" onClick={() => openAuth('signin')}>Sign in</button>
     );
   }
 
