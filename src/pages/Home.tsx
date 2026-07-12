@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Film } from '../types';
-import { featuredFilms, byStatus, byKind, films } from '../data/films';
+import { featuredFilms, byStatus, byKind, films, aiFilms } from '../data/films';
+import { personByName } from '../data/people';
+import { PORTRAIT } from '../types';
 import { Hero } from '../components/Hero';
 import { FilmRow } from '../components/FilmRow';
 import { Top10Row } from '../components/Top10Row';
@@ -11,7 +13,7 @@ import { TrailerModal } from '../components/TrailerModal';
 import { Laurels } from '../components/Laurels';
 import { AnnouncementBar } from '../components/AnnouncementBar';
 import { useCountUp } from '../hooks/useCountUp';
-import { Play, ArrowRight, Clapper, Layers, Camera, Award, Quote, Star } from '../components/Icons';
+import { Play, ArrowRight, Clapper, Layers, Camera, Award, Quote, Star, Sparkles } from '../components/Icons';
 
 const rateHighlights = [
   { title: 'DP / Movie Gigs', price: '$1,950', note: 'Cinematography & DP for films and premium productions.' },
@@ -97,6 +99,22 @@ export default function Home() {
         <FilmRow title="Sport Coverage" films={byKind('Sport')} to="/sport" onPlay={setTrailer} />
       </div>
 
+      {/* AI Originals band */}
+      <section className="ai-band">
+        <div className="container">
+          <Reveal>
+            <div className="section-head ai-band-head">
+              <div>
+                <div className="kicker ai-band-kicker"><Sparkles /> New from the A3 AI Lab</div>
+                <h2 style={{ marginTop: 10 }}>A3 AI Originals</h2>
+              </div>
+              <Link className="link" to="/ai-films">Explore AI Originals <ArrowRight style={{ width: 16, height: 16 }} /></Link>
+            </div>
+          </Reveal>
+        </div>
+        <FilmRow title="" films={aiFilms()} onPlay={setTrailer} />
+      </section>
+
       {/* what we do */}
       <section className="section">
         <div className="container">
@@ -159,15 +177,27 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal className="collective-grid">
-            {collective.map((m) => (
-              <div className="collective-card" key={m.name}>
-                <div className="collective-photo" style={{ background: `linear-gradient(150deg, ${m.accent}dd, ${m.accent}22 60%, #0a0a0b)` }}>
-                  {m.name.split(' ').map((n) => n[0]).join('')}
-                </div>
-                <div className="collective-name">{m.name}</div>
-                <div className="collective-role">{m.role}</div>
-              </div>
-            ))}
+            {collective.map((m) => {
+              const p = personByName(m.name);
+              const inner = (
+                <>
+                  <div className="collective-photo">
+                    {p ? (
+                      <img src={PORTRAIT(p.slug)} alt={m.name} loading="lazy" />
+                    ) : (
+                      <span style={{ background: `linear-gradient(150deg, ${m.accent}dd, ${m.accent}22 60%, #0a0a0b)` }}>
+                        {m.name.split(' ').map((n) => n[0]).join('')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="collective-name">{m.name}</div>
+                  <div className="collective-role">{m.role}</div>
+                </>
+              );
+              return p
+                ? <Link className="collective-card collective-link" to={`/person/${p.slug}`} key={m.name}>{inner}</Link>
+                : <div className="collective-card" key={m.name}>{inner}</div>;
+            })}
           </Reveal>
         </div>
       </section>

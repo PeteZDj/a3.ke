@@ -5,7 +5,17 @@ import { FilmCard } from '../components/FilmCard';
 import { TrailerModal } from '../components/TrailerModal';
 import { Reveal } from '../components/Reveal';
 import { StatsBar, Capabilities } from '../components/PageExtras';
+import { StockGallery } from '../components/StockGallery';
 import { Search, Camera, Play, Award, Star } from '../components/Icons';
+
+const sportGallery = [
+  { src: '/images/sport/sport-01.webp', caption: 'Floodlit match coverage' },
+  { src: '/images/sport/sport-04.webp', caption: 'Rugby — sideline cameras' },
+  { src: '/images/sport/sport-03.webp', caption: 'Athletics, finish-line super-slo' },
+  { src: '/images/sport/sport-06.webp', caption: 'Fight night, ring cams' },
+  { src: '/images/sport/sport-05.webp', caption: 'Court-side, junior hoops' },
+  { src: '/images/sport/sport-07.webp', caption: 'Stadium atmosphere' },
+];
 
 export default function Sport() {
   const [genre, setGenre] = useState('All');
@@ -58,6 +68,13 @@ export default function Sport() {
           { icon: Star, title: 'Athlete & club films', copy: 'Season films, player profiles and narrated recaps that build the story around the scoreline.' },
           { icon: Award, title: 'Same-day highlights', copy: 'On-site ingest and overnight edits deliver highlight packages and social cutdowns before sunrise.' },
         ]}
+      />
+
+      <StockGallery
+        kicker="On the sideline"
+        title="From the gantry to the tunnel"
+        images={sportGallery}
+        note="Field photography from A3 sport productions and partners."
       />
 
       <section className="section-tight">

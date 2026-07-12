@@ -311,6 +311,56 @@ export const films: Film[] = [
     synopsis: 'Full fight-night production: walkout films, five-camera ring coverage and post-fight interviews.',
     director: 'Pete Njagi', cast: ['Kenyan boxing roster'], accent: '#991b1b', trailerNote: 'Premieres on the next fight card.',
   },
+
+  // A3 AI Originals — generative / AI-animated shorts made in the A3 AI Lab
+  {
+    slug: 'neon-savannah', title: 'Neon Savannah', year: 2025, kind: 'Film', ai: true,
+    status: 'Now Streaming', rating: 'PG', runtime: '14 min', language: 'Swahili · English',
+    genres: ['Animation', 'Afrofuturism', 'Adventure'],
+    logline: 'A lone herder crosses a bioluminescent savannah guarded by a spirit lion of light.',
+    synopsis: 'A3\'s first fully AI-animated short. In a savannah lit from within, a young herder follows a spirit lion made of light toward a promise left by the ancestors. Every frame was generated, art-directed and finished in the A3 AI Lab — a proof of what Kenyan storytelling can do with new tools.',
+    director: 'Imani Wekesa', cast: ['Generative ensemble'], accent: '#22d3ee', trailerNote: 'An A3 AI Original — first look.',
+  },
+  {
+    slug: 'digital-ancestors', title: 'Digital Ancestors', year: 2025, kind: 'Film', ai: true,
+    status: 'Now Streaming', rating: 'PG', runtime: '17 min', language: 'English · Luo',
+    genres: ['Animation', 'Documentary', 'Afrofuturism'],
+    logline: 'A young archivist meets the holographic elders keeping a people\'s memory alive.',
+    synopsis: 'An AI-generated speculative documentary. In a near-future Kisumu, a memory archivist converses with luminous holograms of elders — and learns that remembering is its own act of resistance. Made end-to-end in the A3 AI Lab.',
+    director: 'Otieno Odhiambo', cast: ['Generative ensemble'], accent: '#38bdf8', trailerNote: 'An A3 AI Original — first look.',
+  },
+  {
+    slug: 'mombasa-2140', title: 'Mombasa 2140', year: 2025, kind: 'Film', ai: true,
+    status: 'Now Streaming', rating: 'PG-13', runtime: '20 min', language: 'Swahili · English',
+    genres: ['Animation', 'Sci-Fi', 'Adventure'],
+    logline: 'In a floating coastal megacity, a dhow pilot smuggles hope past the tide barons.',
+    synopsis: 'A sweeping AI-animated sci-fi set in a Mombasa of dhow-shaped towers rising from a risen sea. A young pilot runs one last cargo — and finds the future is worth fighting for. Generated and graded in the A3 AI Lab.',
+    director: 'Baraka Kipchoge', cast: ['Generative ensemble'], accent: '#f59e0b', trailerNote: 'An A3 AI Original — first look.',
+  },
+  {
+    slug: 'dreamscapes', title: 'Dreamscapes', year: 2026, kind: 'Film', ai: true,
+    status: 'Coming Soon', rating: 'PG', runtime: '12 min', language: 'No dialogue',
+    genres: ['Animation', 'Art Film', 'Fantasy'],
+    logline: 'A sleeping child drifts through a Nairobi that dissolves into birds and gold.',
+    synopsis: 'A wordless, painterly AI art-film — a child\'s dream where the city breathes, dissolves into flocks of birds and reassembles in gold light. An experiment in pure generative imagery from the A3 AI Lab.',
+    director: 'Sanaa Kariuki', cast: ['Generative ensemble'], accent: '#e0a54b', trailerNote: 'An A3 AI Original — premieres 2026.',
+  },
+  {
+    slug: 'the-signal', title: 'The Signal', year: 2025, kind: 'Film', ai: true,
+    status: 'Now Streaming', rating: '13+', runtime: '16 min', language: 'Sheng · English',
+    genres: ['Animation', 'Sci-Fi', 'Thriller'],
+    logline: 'A rooftop hacker catches a transmission that could rewrite the city\'s code.',
+    synopsis: 'A moody AI-animated thriller. On a rain-soaked Nairobi rooftop, a hacker intercepts a beam of light rising from the skyline — a signal that isn\'t supposed to exist. Made in the A3 AI Lab.',
+    director: 'Pete Njagi', cast: ['Generative ensemble'], accent: '#2dd4bf', trailerNote: 'An A3 AI Original — first look.',
+  },
+  {
+    slug: 'spirit-machine', title: 'Spirit Machine', year: 2026, kind: 'Film', ai: true,
+    status: 'Coming Soon', rating: 'PG-13', runtime: '19 min', language: 'Swahili · English',
+    genres: ['Animation', 'Fantasy', 'Adventure'],
+    logline: 'A guardian woven from brass and prayer awakens to protect a sacred forest.',
+    synopsis: 'An AI-animated myth for the machine age: a guardian built from brass, wood and African pattern stirs to life to defend a glowing sacred forest from those who would drain it. Generated in the A3 AI Lab.',
+    director: 'Tunda Omondi', cast: ['Generative ensemble'], accent: '#eab308', trailerNote: 'An A3 AI Original — premieres 2026.',
+  },
 ];
 
 export const getFilm = (slug: string): Film | undefined =>
@@ -318,15 +368,22 @@ export const getFilm = (slug: string): Film | undefined =>
 
 export const featuredFilms = (): Film[] => films.filter((f) => f.featured);
 
+/** A3 AI Originals (generative / AI-animated). */
+export const aiFilms = (): Film[] => films.filter((f) => f.ai);
+
+/** Everything that is NOT an AI Original — used by the standard catalogue pages. */
+export const standardFilms = (): Film[] => films.filter((f) => !f.ai);
+
+// Standard catalogue selectors exclude AI Originals (they have a dedicated page).
 export const byStatus = (status: Film['status']): Film[] =>
-  films.filter((f) => f.status === status);
+  films.filter((f) => f.status === status && !f.ai);
 
 export const byKind = (kind: Film['kind']): Film[] =>
-  films.filter((f) => f.kind === kind);
+  films.filter((f) => f.kind === kind && !f.ai);
 
 export const relatedFilms = (film: Film, count = 6): Film[] => {
   const scored = films
-    .filter((f) => f.slug !== film.slug)
+    .filter((f) => f.slug !== film.slug && Boolean(f.ai) === Boolean(film.ai))
     .map((f) => ({
       f,
       score: f.genres.filter((g) => film.genres.includes(g)).length,
@@ -336,4 +393,4 @@ export const relatedFilms = (film: Film, count = 6): Film[] => {
 };
 
 export const allGenres = (): string[] =>
-  Array.from(new Set(films.flatMap((f) => f.genres))).sort();
+  Array.from(new Set(films.filter((f) => !f.ai).flatMap((f) => f.genres))).sort();

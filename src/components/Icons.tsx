@@ -98,3 +98,12 @@ export const Quote = (p: SVGProps<SVGSVGElement>) => (
 export const Ticket = (p: SVGProps<SVGSVGElement>) => (
   <svg {...base(p)}><path d="M4 7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v3a2 2 0 0 0 0 4v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a2 2 0 0 0 0-4V7Z" /><path d="M14 6v12" strokeDasharray="2 2" /></svg>
 );
+export const Download = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><path d="M12 4v11M8 11l4 4 4-4M5 20h14" /></svg>
+);
+export const Lock = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)}><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+);
+export const Sparkles = (p: SVGProps<SVGSVGElement>) => (
+  <svg {...base(p)} fill="currentColor" stroke="none"><path d="M12 2.5 13.7 8 19 9.7 13.7 11.4 12 17l-1.7-5.6L5 9.7 10.3 8 12 2.5Z" /><path d="M19 14l.8 2.6L22 17.5l-2.2.9L19 21l-.8-2.6L16 17.5l2.2-.9L19 14Z" /><path d="M5.5 13l.6 2 2 .6-2 .6-.6 2-.6-2-2-.6 2-.6.6-2Z" /></svg>
+);

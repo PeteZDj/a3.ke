@@ -1,16 +1,25 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Search, Menu, Close } from './Icons';
+import { Search, Menu, Close, Sparkles } from './Icons';
 import { Logo } from './Logo';
 
-const links = [
-  { to: '/', label: 'Home', end: true },
+interface NavItem { to: string; label: string; end?: boolean; ai?: boolean }
+
+const primary: NavItem[] = [
   { to: '/films', label: 'Films' },
+  { to: '/ai-films', label: 'AI Originals', ai: true },
   { to: '/series', label: 'Series & Docs' },
   { to: '/commercial', label: 'Commercial' },
   { to: '/sport', label: 'Sport' },
-  { to: '/rates', label: 'Rates' },
+  { to: '/people', label: 'People' },
   { to: '/about', label: 'Studio' },
+];
+
+// The drawer (mobile / tablet) lists everything.
+const drawerLinks: NavItem[] = [
+  { to: '/', label: 'Home', end: true },
+  ...primary,
+  { to: '/rates', label: 'Rates' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -41,8 +50,14 @@ export function Navbar() {
           </Link>
 
           <nav className="nav-links">
-            {links.map((l) => (
-              <NavLink key={l.to} to={l.to} end={l.end} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+            {primary.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.end}
+                className={({ isActive }) => `nav-link ${l.ai ? 'nav-link--ai' : ''} ${isActive ? 'active' : ''}`}
+              >
+                {l.ai && <Sparkles />}
                 {l.label}
               </NavLink>
             ))}
@@ -71,9 +86,14 @@ export function Navbar() {
                 <Close />
               </button>
             </div>
-            {links.map((l) => (
-              <NavLink key={l.to} to={l.to} end={l.end} className={({ isActive }) => (isActive ? 'active' : '')}>
-                {l.label}
+            {drawerLinks.map((l) => (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.end}
+                className={({ isActive }) => `${l.ai ? 'drawer-ai' : ''} ${isActive ? 'active' : ''}`}
+              >
+                {l.ai && <Sparkles />} {l.label}
               </NavLink>
             ))}
             <Link to="/rates" className="btn btn-ghost" style={{ marginTop: 18 }}>Hire Us</Link>

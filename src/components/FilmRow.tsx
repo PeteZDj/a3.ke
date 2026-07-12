@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Film } from '../types';
 import { FilmCard } from './FilmCard';
@@ -16,6 +16,19 @@ export function FilmRow({
   onPlay?: (f: Film) => void;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [overflowing, setOverflowing] = useState(true);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const check = () => setOverflowing(el.scrollWidth > el.clientWidth + 8);
+    check();
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    window.addEventListener('resize', check);
+    return () => { ro.disconnect(); window.removeEventListener('resize', check); };
+  }, [films]);
+
   if (!films.length) return null;
 
   const scroll = (dir: -1 | 1) => {
@@ -26,27 +39,33 @@ export function FilmRow({
 
   return (
     <div className="row">
-      <div className="container">
-        <div className="section-head">
-          <h2>{title}</h2>
-          {to && (
-            <Link className="link" to={to}>
-              View all <ArrowRight style={{ width: 16, height: 16 }} />
-            </Link>
-          )}
+      {(title || to) && (
+        <div className="container">
+          <div className="section-head">
+            {title ? <h2>{title}</h2> : <span />}
+            {to && (
+              <Link className="link" to={to}>
+                View all <ArrowRight style={{ width: 16, height: 16 }} />
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
-      <button className="row-arrow left" aria-label="Scroll left" onClick={() => scroll(-1)}>
-        <ChevronLeft />
-      </button>
-      <div className="row-scroller" ref={ref}>
+      )}
+      {overflowing && (
+        <button className="row-arrow left" aria-label="Scroll left" onClick={() => scroll(-1)}>
+          <ChevronLeft />
+        </button>
+      )}
+      <div className={`row-scroller ${overflowing ? '' : 'row-scroller--center'}`} ref={ref}>
         {films.map((f) => (
           <FilmCard key={f.slug} film={f} onPlay={onPlay} />
         ))}
       </div>
-      <button className="row-arrow right" aria-label="Scroll right" onClick={() => scroll(1)}>
-        <ChevronRight />
-      </button>
+      {overflowing && (
+        <button className="row-arrow right" aria-label="Scroll right" onClick={() => scroll(1)}>
+          <ChevronRight />
+        </button>
+      )}
     </div>
   );
 }

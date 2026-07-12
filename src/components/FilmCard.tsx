@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import type { Film } from '../types';
 import { Poster } from './Poster';
 import { Backdrop } from './Backdrop';
-import { Play, Info, Plus } from './Icons';
+import { Play, Info, Plus, Sparkles } from './Icons';
 
 function StatusFlag({ film }: { film: Film }) {
   if (film.status === 'Now Streaming')
@@ -20,6 +20,7 @@ export function FilmCard({ film, onPlay }: { film: Film; onPlay?: (f: Film) => v
         <Poster film={film} />
         <span className="card-rating">{film.rating}</span>
         <StatusFlag film={film} />
+        {film.ai && <span className="card-ai"><Sparkles /> AI</span>}
 
         {/* Netflix-style expanded preview shown on hover */}
         <div className="card-preview">

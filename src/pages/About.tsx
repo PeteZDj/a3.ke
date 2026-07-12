@@ -3,9 +3,19 @@ import { Link } from 'react-router-dom';
 import { Reveal } from '../components/Reveal';
 import { Backdrop } from '../components/Backdrop';
 import { featuredFilms } from '../data/films';
+import { personByName } from '../data/people';
+import { PORTRAIT } from '../types';
 import { ArrowRight, Play } from '../components/Icons';
 import { TrailerModal } from '../components/TrailerModal';
+import { StockGallery } from '../components/StockGallery';
 import type { Film } from '../types';
+
+const studioGallery = [
+  { src: '/images/studio/studio-01.webp', caption: 'The sound stage' },
+  { src: '/images/studio/studio-02.webp', caption: 'The edit suite' },
+  { src: '/images/studio/studio-04.webp', caption: 'The mix room' },
+  { src: '/images/studio/studio-06.webp', caption: 'Broadcast gallery' },
+];
 
 const team = [
   { name: 'Pete Njagi', role: 'Studio Head', accent: '#3b82f6' },
@@ -105,20 +115,59 @@ export default function About() {
             </div>
           </div>
           <Reveal className="team-grid">
-            {team.map((m) => (
-              <div className="member" key={m.name}>
-                <div
-                  className="member-photo"
-                  style={{ background: `linear-gradient(150deg, ${m.accent}cc, ${m.accent}33 60%, #0a0a0b)` }}
-                >
-                  {m.name.split(' ').map((n) => n[0]).join('')}
-                </div>
-                <div className="member-body">
-                  <div className="m-name">{m.name}</div>
-                  <div className="m-role">{m.role}</div>
-                </div>
-              </div>
-            ))}
+            {team.map((m) => {
+              const p = personByName(m.name);
+              const body = (
+                <>
+                  <div className="member-photo">
+                    {p ? (
+                      <img src={PORTRAIT(p.slug)} alt={m.name} loading="lazy" />
+                    ) : (
+                      <span style={{ background: `linear-gradient(150deg, ${m.accent}cc, ${m.accent}33 60%, #0a0a0b)` }}>
+                        {m.name.split(' ').map((n) => n[0]).join('')}
+                      </span>
+                    )}
+                  </div>
+                  <div className="member-body">
+                    <div className="m-name">{m.name}</div>
+                    <div className="m-role">{m.role}</div>
+                  </div>
+                </>
+              );
+              return p
+                ? <Link className="member member-link" key={m.name} to={`/person/${p.slug}`}>{body}</Link>
+                : <div className="member" key={m.name}>{body}</div>;
+            })}
+          </Reveal>
+          <div style={{ marginTop: 22 }}>
+            <Link className="btn btn-outline" to="/people">Meet the full collective <ArrowRight style={{ width: 16, height: 16 }} /></Link>
+          </div>
+        </div>
+      </section>
+
+      <StockGallery
+        kicker="The facility"
+        title="One roof, script to screen"
+        images={studioGallery}
+        note="A3's sound stage and post-production house in Nairobi's Industrial Area."
+      />
+
+      <section className="section-tight">
+        <div className="container">
+          <Reveal className="feature">
+            <div className="feature-media">
+              <Backdrop film={featuredFilms()[1] ?? feature} alt="A3 crew on location" />
+            </div>
+            <div className="prose">
+              <div className="kicker">On location</div>
+              <h2 style={{ fontSize: 'clamp(24px,3.4vw,38px)', margin: '14px 0 18px' }}>Kenya is our backlot</h2>
+              <p>
+                From the neon of Westlands to the escarpments of the Rift, we shoot
+                where our stories live. A3 crews have worked across seventeen counties —
+                and every frame is finished back home in Nairobi.
+              </p>
+              <Link className="btn btn-outline" to="/films">See where we shot <ArrowRight style={{ width: 16, height: 16 }} /></Link>
+            </div>
           </Reveal>
         </div>
       </section>

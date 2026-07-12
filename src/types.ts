@@ -34,6 +34,7 @@ export interface Film {
   director: string;
   cast: string[];
   featured?: boolean;    // appears in the home hero rotation
+  ai?: boolean;          // an "A3 AI Original" (generative / animated film)
   accent: string;        // brand color used in gradient fallbacks (hex)
   trailerNote?: string;  // shown in the trailer modal
 
@@ -56,3 +57,4 @@ export const POSTER = (slug: string) => `/images/posters/${slug}.webp`;
 export const POSTER_SVG = (slug: string) => `/images/posters/${slug}.svg`;
 export const BACKDROP = (slug: string) => `/images/backdrops/${slug}.webp`;
 export const BACKDROP_SVG = (slug: string) => `/images/backdrops/${slug}.svg`;
+export const PORTRAIT = (slug: string) => `/images/people/${slug}.webp`;

@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getFilm, relatedFilms } from '../data/films';
-import { filmCrew, filmDetails, filmEpisodes } from '../data/filmMeta';
+import { filmCrew, filmDetails, filmEpisodes, filmScore, filmAccess, filmBTS } from '../data/filmMeta';
 import type { Film } from '../types';
 import { Backdrop } from '../components/Backdrop';
 import { FilmRow } from '../components/FilmRow';
 import { TrailerModal } from '../components/TrailerModal';
+import { WatchModal } from '../components/WatchModal';
+import { PersonChip } from '../components/PersonAvatar';
 import { Reveal } from '../components/Reveal';
 import { Laurels } from '../components/Laurels';
-import { Play, Plus, ArrowRight, Quote, Calendar, Globe, Volume, Camera, Pin, Ticket, Award } from '../components/Icons';
+import { downloadScript } from '../lib/script';
+import { Play, ArrowRight, Quote, Calendar, Globe, Volume, Camera, Pin, Ticket, Award, Star, Download, Clapper } from '../components/Icons';
 
 function StatusBadge({ film }: { film: Film }) {
   if (film.status === 'Now Streaming') return <span className="badge streaming"><span className="dot" />Now Streaming</span>;
@@ -16,31 +19,11 @@ function StatusBadge({ film }: { film: Film }) {
   return <span className="badge production">In Production</span>;
 }
 
-function initials(name: string) {
-  return name.split(' ').filter(Boolean).slice(0, 2).map((n) => n[0]).join('').toUpperCase();
-}
-function hue(name: string) {
-  let h = 0;
-  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
-  return h;
-}
-function Avatar({ name }: { name: string }) {
-  const h = hue(name);
-  return (
-    <span
-      className="person-avatar"
-      style={{ background: `linear-gradient(150deg, hsl(${h} 60% 42%), hsl(${(h + 40) % 360} 55% 22%))` }}
-      aria-hidden="true"
-    >
-      {initials(name)}
-    </span>
-  );
-}
-
 export default function FilmDetail() {
   const { slug } = useParams();
   const film = slug ? getFilm(slug) : undefined;
   const [trailer, setTrailer] = useState<Film | null>(null);
+  const [watch, setWatch] = useState<Film | null>(null);
 
   useEffect(() => {
     document.title = film ? `${film.title} — A3 Studios` : 'Not found — A3 Studios';
@@ -61,7 +44,10 @@ export default function FilmDetail() {
   const crew = filmCrew(film);
   const details = filmDetails(film);
   const episodes = filmEpisodes(film);
-  const kindLabel = film.kind === 'Film' ? 'Original Film' : film.kind;
+  const score = filmScore(film);
+  const access = filmAccess(film);
+  const bts = filmBTS(film);
+  const kindLabel = film.ai ? 'AI Original' : film.kind === 'Film' ? 'Original Film' : film.kind;
 
   return (
     <>
@@ -78,6 +64,8 @@ export default function FilmDetail() {
                 <div className="kicker" style={{ marginBottom: 12 }}>A3 {kindLabel}</div>
                 <h1>{film.title}</h1>
                 <div className="detail-meta">
+                  <span className="detail-score"><Star /> {score.toFixed(1)}<span className="detail-score-max"> / 10</span></span>
+                  <span className="pip" />
                   <span className="text-grad" style={{ fontWeight: 700 }}>{film.year}</span>
                   <span className="pip" /> <span>{film.rating}</span>
                   <span className="pip" /> <span>{film.runtime}</span>
@@ -88,8 +76,11 @@ export default function FilmDetail() {
                 </div>
                 <p className="detail-synopsis">{film.logline}</p>
                 <div className="detail-actions">
+                  <button className="btn btn-gold" onClick={() => setWatch(film)}>
+                    <Play /> {access.free ? (film.status === 'Now Streaming' ? 'Watch Free' : 'Notify Me') : `Rent · $${access.price?.toFixed(2)}`}
+                  </button>
                   <button className="btn btn-primary" onClick={() => setTrailer(film)}><Play /> Watch Trailer</button>
-                  <button className="btn btn-ghost"><Plus /> Add to My List</button>
+                  <button className="btn btn-ghost" onClick={() => downloadScript(film)}><Download /> Script</button>
                 </div>
                 <div className="fd-credits-line">
                   <span><strong>Directed by</strong> {film.director}</span>
@@ -122,7 +113,7 @@ export default function FilmDetail() {
                 <p className="fd-prose">{film.synopsis}</p>
                 <p className="fd-prose fd-prose-soft">{details.productionNote}</p>
 
-                {film.themes || details.themes.length ? (
+                {details.themes.length ? (
                   <div className="fd-themes">
                     {details.themes.map((t) => <span className="chip" key={t}>{t}</span>)}
                   </div>
@@ -146,13 +137,7 @@ export default function FilmDetail() {
                 </div>
                 <div className="fd-people">
                   {film.cast.map((c) => (
-                    <div className="person" key={c}>
-                      <Avatar name={c} />
-                      <div className="person-txt">
-                        <div className="person-name">{c}</div>
-                        <div className="person-role">Cast</div>
-                      </div>
-                    </div>
+                    <PersonChip key={c} name={c} role="Cast" />
                   ))}
                 </div>
               </Reveal>
@@ -164,22 +149,34 @@ export default function FilmDetail() {
                 </div>
                 <div className="fd-people">
                   {crew.map((m) => (
-                    <div className="person" key={m.role}>
-                      <Avatar name={m.name} />
-                      <div className="person-txt">
-                        <div className="person-name">{m.name}</div>
-                        <div className="person-role">{m.role}</div>
-                      </div>
-                    </div>
+                    <PersonChip key={m.role} name={m.name} role={m.role} />
                   ))}
                 </div>
               </Reveal>
+
+              {/* Behind the scenes */}
+              {bts.length > 0 && (
+                <Reveal>
+                  <div className="section-head fd-people-head">
+                    <h3><Clapper style={{ width: 22, height: 22, verticalAlign: '-4px', marginRight: 8 }} />Behind the scenes</h3>
+                  </div>
+                  <div className="fd-bts">
+                    {bts.map((shot) => (
+                      <figure className="fd-bts-item" key={shot.src}>
+                        <img src={shot.src} alt={shot.caption} loading="lazy" />
+                        <figcaption>{shot.caption}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                  <p className="fd-bts-note">Production stills. A3 titles are shot, finished and graded in-house in Nairobi.</p>
+                </Reveal>
+              )}
 
               {/* Episodes */}
               {episodes.length > 0 && (
                 <Reveal>
                   <div className="section-head fd-people-head">
-                    <h3>{film.kind === 'Documentary' ? 'Episodes' : 'Episodes'} <span className="fd-count">{episodes.length}</span></h3>
+                    <h3>Episodes <span className="fd-count">{episodes.length}</span></h3>
                   </div>
                   <div className="fd-episodes">
                     {episodes.map((ep) => (
@@ -192,7 +189,7 @@ export default function FilmDetail() {
                           </div>
                           <p className="episode-syn">{ep.synopsis}</p>
                         </div>
-                        <button className="episode-play" aria-label={`Play episode ${ep.number}`} onClick={() => setTrailer(film)}><Play /></button>
+                        <button className="episode-play" aria-label={`Play episode ${ep.number}`} onClick={() => setWatch(film)}><Play /></button>
                       </div>
                     ))}
                   </div>
@@ -205,19 +202,24 @@ export default function FilmDetail() {
               <Reveal className="fd-panel">
                 <h4 className="fd-panel-title"><Ticket /> Details</h4>
                 <ul className="fd-spec">
+                  <li><span className="fd-spec-k"><Star /> Rating</span><span className="fd-spec-v">{score.toFixed(1)} / 10</span></li>
                   <li><span className="fd-spec-k"><Calendar /> Release</span><span className="fd-spec-v">{details.releaseLine}</span></li>
-                  <li><span className="fd-spec-k"><Award /> Rating</span><span className="fd-spec-v">{film.rating}</span></li>
+                  <li><span className="fd-spec-k"><Award /> Certificate</span><span className="fd-spec-v">{film.rating}</span></li>
                   <li><span className="fd-spec-k"><Globe /> Language</span><span className="fd-spec-v">{film.language}</span></li>
                   <li><span className="fd-spec-k"><Camera /> Format</span><span className="fd-spec-v">{details.format}</span></li>
                   <li><span className="fd-spec-k"><Volume /> Sound</span><span className="fd-spec-v">{details.soundMix}</span></li>
                   <li><span className="fd-spec-k"><Pin /> Locations</span><span className="fd-spec-v">{details.locations.join(' · ')}</span></li>
+                  <li><span className="fd-spec-k"><Ticket /> Access</span><span className="fd-spec-v">{access.free ? (film.status === 'Now Streaming' ? 'Free (email unlock)' : 'Coming soon') : `Rental · $${access.price?.toFixed(2)}`}</span></li>
                 </ul>
                 <div className="fd-panel-sub">Where to watch</div>
                 <div className="fd-platforms">
                   {details.platforms.map((p) => <span className="badge" key={p}>{p}</span>)}
                 </div>
-                <button className="btn btn-gold fd-panel-btn" onClick={() => setTrailer(film)}>
-                  <Play /> Watch Trailer
+                <button className="btn btn-gold fd-panel-btn" onClick={() => setWatch(film)}>
+                  <Play /> {access.free ? (film.status === 'Now Streaming' ? 'Watch Free' : 'Notify Me') : `Rent · $${access.price?.toFixed(2)}`}
+                </button>
+                <button className="btn btn-outline fd-panel-btn" onClick={() => downloadScript(film)}>
+                  <Download /> Download script excerpt
                 </button>
                 <Link className="btn btn-outline fd-panel-btn" to="/contact">Licensing &amp; press</Link>
               </Reveal>
@@ -228,14 +230,15 @@ export default function FilmDetail() {
 
       {related.length > 0 && (
         <section className="section-tight" style={{ paddingBottom: 40 }}>
-          <FilmRow title="More from A3" films={related} to="/films" onPlay={setTrailer} />
+          <FilmRow title={film.ai ? 'More A3 AI Originals' : 'More from A3'} films={related} to={film.ai ? '/ai-films' : '/films'} onPlay={setTrailer} />
           <div className="container" style={{ marginTop: 8 }}>
-            <Link className="section-head link" to="/films">Browse the full catalogue <ArrowRight style={{ width: 16, height: 16 }} /></Link>
+            <Link className="section-head link" to={film.ai ? '/ai-films' : '/films'}>Browse the full catalogue <ArrowRight style={{ width: 16, height: 16 }} /></Link>
           </div>
         </section>
       )}
 
       <TrailerModal film={trailer} onClose={() => setTrailer(null)} />
+      <WatchModal film={watch} onClose={() => setWatch(null)} />
     </>
   );
 }

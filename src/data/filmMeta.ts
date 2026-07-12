@@ -201,6 +201,67 @@ export function filmDetails(film: Film): FilmDetails {
   return { locations, format, soundMix, releaseLine, platforms, themes, awards, productionNote, quote };
 }
 
+/** Deterministic audience score out of 10 (e.g. 8.7). Stable per title. */
+export function filmScore(film: Film): number {
+  const s = hash(film.slug + 'score');
+  // 7.6 – 9.5 range, one decimal
+  const v = 76 + (s % 20);
+  return v / 10;
+}
+
+export interface WatchAccess {
+  free: boolean;
+  price?: number;       // USD rental price when paid
+  label: string;        // CTA label
+}
+
+/** Whether a title is free (email unlock) or paid (rental). Deterministic. */
+export function filmAccess(film: Film): WatchAccess {
+  // Documentaries, sport and commercial work stream free (email unlock).
+  // Feature films & series are premium rentals. Unreleased titles are "notify".
+  if (film.status !== 'Now Streaming') {
+    return { free: true, label: 'Notify me' };
+  }
+  const free = film.kind === 'Documentary' || film.kind === 'Sport' || film.kind === 'Commercial';
+  if (free) return { free: true, label: 'Watch free' };
+  const s = hash(film.slug + 'price');
+  const price = [2.99, 3.99, 4.99][s % 3];
+  return { free: false, price, label: `Rent · $${price.toFixed(2)}` };
+}
+
+// Shared behind-the-scenes stock pool (real Creative-Commons production stills).
+const BTS_POOL = ['bts-01', 'bts-02', 'bts-03', 'bts-06', 'bts-09', 'bts-10'];
+const BTS_CAPTIONS = [
+  'On set — lighting the next setup',
+  'Location shoot, principal photography',
+  'The DoP lines up a shot',
+  'Camera team on the dolly',
+  'The full crew between takes',
+  "Director's monitor, video village",
+];
+
+export interface BTSShot { src: string; caption: string; }
+
+/** A small behind-the-scenes gallery for a title (deterministic selection). */
+export function filmBTS(film: Film, count = 4): BTSShot[] {
+  if (film.ai) return []; // AI Originals have no on-set stills
+  const s = hash(film.slug + 'bts');
+  const idxs = pickManyIdx(BTS_POOL.length, s, Math.min(count, BTS_POOL.length));
+  return idxs.map((i) => ({ src: `/images/bts/${BTS_POOL[i]}.webp`, caption: BTS_CAPTIONS[i] }));
+}
+
+function pickManyIdx(len: number, seed: number, count: number): number[] {
+  const out: number[] = [];
+  const used = new Set<number>();
+  let s = seed;
+  while (out.length < Math.min(count, len)) {
+    s = (s * 1103515245 + 12345) >>> 0;
+    const idx = s % len;
+    if (!used.has(idx)) { used.add(idx); out.push(idx); }
+  }
+  return out;
+}
+
 const EP_TITLES = [
   'Origins', 'The Turn', 'Pressure', 'Fault Lines', 'The Deal', 'Nightfall',
   'Homecoming', 'The Reckoning', 'Crossroads', 'Rising', 'The Cost', 'Full Circle',
