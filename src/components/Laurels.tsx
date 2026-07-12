@@ -18,7 +18,7 @@ function Laurel({ top, bottom }: { top: string; bottom: string }) {
   );
 }
 
-const items = [
+const defaultItems = [
   { top: 'Official Selection', bottom: 'Toronto 2025' },
   { top: 'Best Feature', bottom: 'FESPACO' },
   { top: 'Audience Award', bottom: 'Durban Intl.' },
@@ -26,11 +26,11 @@ const items = [
   { top: 'Winner', bottom: 'Kalasha Awards' },
 ];
 
-export function Laurels() {
+export function Laurels({ items = defaultItems }: { items?: { top: string; bottom: string }[] }) {
   return (
     <div className="laurels">
-      {items.map((i) => (
-        <Laurel key={i.bottom} top={i.top} bottom={i.bottom} />
+      {items.map((i, idx) => (
+        <Laurel key={`${i.bottom}-${idx}`} top={i.top} bottom={i.bottom} />
       ))}
     </div>
   );

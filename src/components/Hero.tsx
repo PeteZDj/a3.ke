@@ -68,10 +68,14 @@ export function Hero({ films, onPlay }: { films: Film[]; onPlay: (f: Film) => vo
         </div>
       )}
 
-      <div className="hero-scroll" aria-hidden="true">
-        <span>Scroll</span>
-        <span className="hero-scroll-line" />
-      </div>
+      <button
+        className="hero-scroll"
+        aria-label="Scroll to explore"
+        onClick={() => window.scrollTo({ top: Math.round(window.innerHeight * 0.86), behavior: 'smooth' })}
+      >
+        <span className="hero-scroll-mouse" aria-hidden="true"><span className="hero-scroll-wheel" /></span>
+        <span className="hero-scroll-label">Scroll to explore</span>
+      </button>
     </section>
   );
 }

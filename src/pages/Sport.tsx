@@ -4,7 +4,8 @@ import type { Film } from '../types';
 import { FilmCard } from '../components/FilmCard';
 import { TrailerModal } from '../components/TrailerModal';
 import { Reveal } from '../components/Reveal';
-import { Search } from '../components/Icons';
+import { StatsBar, Capabilities } from '../components/PageExtras';
+import { Search, Camera, Play, Award, Star } from '../components/Icons';
 
 export default function Sport() {
   const [genre, setGenre] = useState('All');
@@ -36,11 +37,32 @@ export default function Sport() {
         <div className="container">
           <div className="kicker">Live · Broadcast · Highlights</div>
           <h1>Sport coverage</h1>
-          <p>Match coverage, tournament recaps, athlete films and live vision — cinematic crew on the sideline.</p>
+          <p>Match coverage, tournament recaps, athlete films and live vision — cinematic crew on the sideline. From HSBC Sevens to the KPL, we bring feature-film production values to the pitch, the track and the ring.</p>
+          <StatsBar
+            items={[
+              { value: `${catalogue.length}`, label: 'Productions' },
+              { value: '6-cam', label: 'Match rigs' },
+              { value: '4K', label: 'Broadcast vision' },
+              { value: 'Same-day', label: 'Highlight turnaround' },
+            ]}
+          />
         </div>
       </header>
+
+      <Capabilities
+        kicker="What we bring to the sideline"
+        title="Broadcast-grade, cinematic sport"
+        items={[
+          { icon: Camera, title: 'Multi-camera coverage', copy: 'Up to six-camera match rigs with slo-mo, tunnel cams and finish-line super-slo for track and field.' },
+          { icon: Play, title: 'Live vision & replay', copy: 'Live gallery, instant replay and clean/dirty feeds ready for broadcast or streaming partners.' },
+          { icon: Star, title: 'Athlete & club films', copy: 'Season films, player profiles and narrated recaps that build the story around the scoreline.' },
+          { icon: Award, title: 'Same-day highlights', copy: 'On-site ingest and overnight edits deliver highlight packages and social cutdowns before sunrise.' },
+        ]}
+      />
+
       <section className="section-tight">
         <div className="container">
+          <div className="section-head" style={{ marginBottom: 16 }}><h2>The coverage reel</h2></div>
           <div className="filters">
             <div className="search-box" style={{ flex: 1, maxWidth: 420 }}>
               <Search />
@@ -59,6 +81,7 @@ export default function Sport() {
           )}
         </div>
       </section>
+
       <TrailerModal film={trailer} onClose={() => setTrailer(null)} />
     </>
   );

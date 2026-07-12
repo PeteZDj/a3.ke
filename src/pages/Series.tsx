@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { byKind } from '../data/films';
+import { filmEpisodes } from '../data/filmMeta';
 import type { Film } from '../types';
 import { FilmCard } from '../components/FilmCard';
 import { TrailerModal } from '../components/TrailerModal';
 import { Reveal } from '../components/Reveal';
+import { StatsBar } from '../components/PageExtras';
 
 export default function Series() {
   const [trailer, setTrailer] = useState<Film | null>(null);
@@ -14,13 +16,26 @@ export default function Series() {
     document.title = 'Series & Documentaries — A3 Studios';
   }, []);
 
+  const totalEpisodes = useMemo(
+    () => [...series, ...docs].reduce((n, f) => n + filmEpisodes(f).length, 0),
+    [series, docs],
+  );
+
   return (
     <>
       <header className="page-head">
         <div className="container">
           <div className="kicker">Episodic & Non-fiction</div>
           <h1>Series &amp; Documentaries</h1>
-          <p>Stories with room to breathe — multi-part dramas and documentaries that go where the headlines stop.</p>
+          <p>Stories with room to breathe — multi-part dramas and documentaries that go where the headlines stop. Fashion-world intrigue, the music reshaping a continent, and the lives behind the biggest moments.</p>
+          <StatsBar
+            items={[
+              { value: `${series.length}`, label: 'Series' },
+              { value: `${docs.length}`, label: 'Documentaries' },
+              { value: `${totalEpisodes}`, label: 'Episodes' },
+              { value: 'HDR', label: 'Streaming quality' },
+            ]}
+          />
         </div>
       </header>
 

@@ -4,6 +4,7 @@ import type { Film } from '../types';
 import { FilmCard } from '../components/FilmCard';
 import { TrailerModal } from '../components/TrailerModal';
 import { Reveal } from '../components/Reveal';
+import { StatsBar } from '../components/PageExtras';
 import { Search } from '../components/Icons';
 
 const statusFilters = ['All', 'Now Streaming', 'Coming Soon', 'In Production'] as const;
@@ -20,6 +21,8 @@ export default function Films() {
 
   const allFilms = useMemo(() => byKind('Film'), []);
   const genres = useMemo(() => ['All', ...allGenres()], []);
+  const streamingCount = useMemo(() => allFilms.filter((f) => f.status === 'Now Streaming').length, [allFilms]);
+  const upcomingCount = useMemo(() => allFilms.filter((f) => f.status !== 'Now Streaming').length, [allFilms]);
 
   const results = useMemo(() => {
     const needle = q.trim().toLowerCase();
@@ -37,7 +40,15 @@ export default function Films() {
         <div className="container">
           <div className="kicker">The A3 Catalogue</div>
           <h1>Every story we tell</h1>
-          <p>Bold originals, binge-worthy series and unflinching documentaries — all made in Kenya, for the world.</p>
+          <p>Bold originals, binge-worthy series and unflinching documentaries — all developed, shot and finished in Kenya, for the world. Rich neo-noir, sweeping survival epics, coming-of-age drama and Afrofuturist adventure.</p>
+          <StatsBar
+            items={[
+              { value: `${allFilms.length}`, label: 'Original films' },
+              { value: `${streamingCount}`, label: 'Now streaming' },
+              { value: `${upcomingCount}`, label: 'Coming soon' },
+              { value: `${genres.length - 1}`, label: 'Genres' },
+            ]}
+          />
         </div>
       </header>
 

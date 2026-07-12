@@ -2,6 +2,23 @@ export type FilmStatus = 'Now Streaming' | 'Coming Soon' | 'In Production';
 
 export type FilmKind = 'Film' | 'Series' | 'Documentary' | 'Commercial' | 'Sport';
 
+export interface CrewMember {
+  role: string;
+  name: string;
+}
+
+export interface Episode {
+  number: number;
+  title: string;
+  runtime: string;
+  synopsis: string;
+}
+
+export interface FilmAward {
+  label: string;   // e.g. "Official Selection", "Winner"
+  event: string;   // e.g. "FESPACO 2025"
+}
+
 export interface Film {
   slug: string;
   title: string;
@@ -19,6 +36,20 @@ export interface Film {
   featured?: boolean;    // appears in the home hero rotation
   accent: string;        // brand color used in gradient fallbacks (hex)
   trailerNote?: string;  // shown in the trailer modal
+
+  // ---- optional rich metadata (falls back to derived defaults in filmMeta) ----
+  tagline?: string;
+  crew?: CrewMember[];
+  awards?: FilmAward[];
+  locations?: string[];
+  themes?: string[];
+  productionNote?: string;
+  quote?: { text: string; source: string };
+  episodes?: Episode[];
+  format?: string;       // e.g. "Digital 4K · 2.39:1"
+  soundMix?: string;     // e.g. "Dolby Atmos 5.1"
+  releaseDate?: string;
+  platforms?: string[];
 }
 
 export const POSTER = (slug: string) => `/images/posters/${slug}.webp`;
