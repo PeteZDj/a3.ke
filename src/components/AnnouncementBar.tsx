@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Close } from './Icons';
 
+/** Promo band — rendered inline below the hero (not a fixed top bar). */
 export function AnnouncementBar() {
   const [open, setOpen] = useState(true);
-  useEffect(() => {
-    document.body.classList.toggle('announce-open', open);
-    return () => document.body.classList.remove('announce-open');
-  }, [open]);
   if (!open) return null;
   return (
     <div className="announce">

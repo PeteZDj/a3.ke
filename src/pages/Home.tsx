@@ -4,12 +4,23 @@ import type { Film } from '../types';
 import { featuredFilms, byStatus, byKind, films } from '../data/films';
 import { Hero } from '../components/Hero';
 import { FilmRow } from '../components/FilmRow';
+import { Top10Row } from '../components/Top10Row';
 import { Reveal } from '../components/Reveal';
 import { Backdrop } from '../components/Backdrop';
 import { TrailerModal } from '../components/TrailerModal';
 import { Laurels } from '../components/Laurels';
+import { AnnouncementBar } from '../components/AnnouncementBar';
 import { useCountUp } from '../hooks/useCountUp';
 import { Play, ArrowRight, Clapper, Layers, Camera, Award, Quote, Star } from '../components/Icons';
+
+const rateHighlights = [
+  { title: 'DP / Movie Gigs', price: '$1,950', note: 'Cinematography & DP for films and premium productions.' },
+  { title: 'Commercial Videos', price: '$1,218.75', note: 'Brand films, product launches & social campaigns.' },
+  { title: 'Event Videos', price: '$975', note: 'Launches, conferences & live experiences.' },
+  { title: 'Music Videos', price: '$487.50', note: 'Performance & narrative promos, graded in-house.' },
+  { title: 'Sport Videos', price: '$487.50', note: 'Match highlights & athlete films.' },
+  { title: 'Wedding Videos', price: '$390', note: 'Cinematic wedding films & highlight edits.' },
+];
 
 const stats = [
   { num: 24, suffix: '+', label: 'Projects delivered' },
@@ -56,6 +67,9 @@ export default function Home() {
   const [trailer, setTrailer] = useState<Film | null>(null);
   const featured = featuredFilms();
   const spotlight = featured[1] ?? films[0];
+  const top10 = Array.from(
+    new Map([...featured, ...byStatus('Now Streaming')].map((f) => [f.slug, f])).values(),
+  );
 
   useEffect(() => {
     document.title = 'A3 Studios — Film, commercial video & sport coverage';
@@ -72,8 +86,11 @@ export default function Home() {
         </div>
       </div>
 
+      <AnnouncementBar />
+
       <div className="section-tight" style={{ paddingTop: 'clamp(24px,4vw,44px)' }}>
         <FilmRow title="Now Streaming" films={byStatus('Now Streaming').filter((f) => f.kind === 'Film' || f.kind === 'Series' || f.kind === 'Documentary')} to="/films" onPlay={setTrailer} />
+        <Top10Row title="Top 10 in Kenya today" films={top10} />
         <FilmRow title="A3 Originals" films={byKind('Film')} to="/films" onPlay={setTrailer} />
         <FilmRow title="Series & Documentaries" films={[...byKind('Series'), ...byKind('Documentary')]} to="/series" onPlay={setTrailer} />
         <FilmRow title="Commercial & Video" films={byKind('Commercial')} to="/commercial" onPlay={setTrailer} />
@@ -155,21 +172,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* rate card teaser */}
-      <section className="section-tight">
+      {/* rate card — shown on the homepage */}
+      <section className="section">
         <div className="container">
-          <Reveal className="rate-teaser">
-            <div>
-              <div className="kicker">Video production</div>
-              <h2 style={{ marginTop: 12, marginBottom: 10 }}>Premium video, transparent rates</h2>
-              <p style={{ color: 'var(--ink-soft)', maxWidth: 520, margin: 0 }}>
-                Commercials $1,218.75 · music videos $487.50 · weddings $390 · DP / film $1,950.
-                Each service has its own page with scope and deliverables.
-              </p>
+          <Reveal>
+            <div className="section-head">
+              <div>
+                <div className="kicker">Video production · Transparent rates</div>
+                <h2 style={{ marginTop: 12 }}>Premium video, published prices</h2>
+              </div>
+              <Link className="link" to="/rates">Full rate card <ArrowRight style={{ width: 16, height: 16 }} /></Link>
             </div>
-            <Link className="btn btn-gold" to="/rates">
-              Hire Us <ArrowRight style={{ width: 18, height: 18 }} />
-            </Link>
+          </Reveal>
+          <Reveal className="rate-home-grid">
+            {rateHighlights.map((r) => (
+              <Link className="rate-home-card" to="/rates" key={r.title}>
+                <div className="rate-home-price">{r.price}</div>
+                <div className="rate-home-title">{r.title}</div>
+                <p className="rate-home-note">{r.note}</p>
+                <span className="rate-home-more">View scope <ArrowRight style={{ width: 15, height: 15 }} /></span>
+              </Link>
+            ))}
+          </Reveal>
+          <Reveal className="rate-home-cta">
+            <p>Book a single video or a full annual slate — Kenya-wide, East Africa on quote. One pro-bono community slot reserved each year.</p>
+            <Link className="btn btn-gold" to="/contact">Hire Us <ArrowRight style={{ width: 18, height: 18 }} /></Link>
           </Reveal>
         </div>
       </section>

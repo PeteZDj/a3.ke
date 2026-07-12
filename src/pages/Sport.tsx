@@ -75,7 +75,7 @@ export default function Sport() {
             ))}
           </div>
           {results.length ? (
-            <Reveal className="grid">{results.map((f) => <FilmCard key={f.slug} film={f} onPlay={setTrailer} />)}</Reveal>
+            <Reveal className="grid grid-stagger">{results.map((f) => <FilmCard key={f.slug} film={f} onPlay={setTrailer} />)}</Reveal>
           ) : (
             <div className="empty"><h3>No coverage matches</h3><p>Try another sport or clear your search.</p></div>
           )}
