@@ -1,4 +1,4 @@
-export type RateLine = {
+﻿export type RateLine = {
   id: string;
   label: string;
   shortLabel: string;
@@ -31,7 +31,7 @@ export const ANNUAL_REVENUE_USD = 23_400;
 export const ANNUAL_VIDEO_COUNT = 30;
 export const PRO_BONO_COUNT = 1;
 
-/** Client-facing services — exact per-video rates. */
+/** Client-facing services â€” exact per-video rates. */
 export const websiteServices: WebsiteService[] = [
   {
     id: 'dp-movies',
@@ -41,9 +41,9 @@ export const websiteServices: WebsiteService[] = [
     priceLabel: '$1,950',
     description:
       'Cinematography and director of photography services for films, documentaries, short films, and premium productions.',
-    accent: '#e8b23a',
-    deliverables: ['Shot & logged master footage', 'Camera & lighting plan', '1× DIT handoff', 'On-set stills pack'],
-    typicalScope: '3–5 shoot days per title; A-camera + B-camera when scripted; LUT preview on set.',
+    accent: '#e50914',
+    deliverables: ['Shot & logged master footage', 'Camera & lighting plan', '1Ã— DIT handoff', 'On-set stills pack'],
+    typicalScope: '3â€“5 shoot days per title; A-camera + B-camera when scripted; LUT preview on set.',
     turnaround: 'Dailies within 24h; project wrap within 5 business days of final shoot day.',
   },
   {
@@ -55,7 +55,7 @@ export const websiteServices: WebsiteService[] = [
     description:
       'High-quality brand videos, product promos, launch videos, and social media campaigns designed to make your business look premium.',
     accent: '#3b82f6',
-    deliverables: ['Hero film (60–90s)', '3× social cut-downs', 'Clean & captioned masters', 'Thumbnail still'],
+    deliverables: ['Hero film (60â€“90s)', '3Ã— social cut-downs', 'Clean & captioned masters', 'Thumbnail still'],
     typicalScope: 'Single-location or studio day; client on set; VO and music licencing quoted separately.',
     turnaround: 'Rough cut in 5 days; final delivery in 10 business days after picture lock.',
   },
@@ -68,7 +68,7 @@ export const websiteServices: WebsiteService[] = [
     description:
       'Creative, stylish, and performance-driven music videos for artists who want visuals that match their sound and image.',
     accent: '#db2777',
-    deliverables: ['1× master MV (3–4 min)', '1× vertical social edit', 'Colour-graded ProRes master', 'Behind-the-scenes stills'],
+    deliverables: ['1Ã— master MV (3â€“4 min)', '1Ã— vertical social edit', 'Colour-graded ProRes master', 'Behind-the-scenes stills'],
     typicalScope: 'Half-day or full-day shoot; treatment supplied by A3 or artist team.',
     turnaround: 'Offline in 4 days; graded master in 8 business days.',
   },
@@ -81,7 +81,7 @@ export const websiteServices: WebsiteService[] = [
     description:
       'Clean property walkthroughs, lifestyle reels, and cinematic real estate showcases for agents, developers, and property brands.',
     accent: '#16a34a',
-    deliverables: ['Walk-through film (2–3 min)', 'Drone exteriors when permitted', 'Agent intro bumper', 'MLS-ready export'],
+    deliverables: ['Walk-through film (2â€“3 min)', 'Drone exteriors when permitted', 'Agent intro bumper', 'MLS-ready export'],
     typicalScope: 'Half-day on location; gimbal + drone combo where airspace allows.',
     turnaround: 'Draft in 3 days; final in 6 business days.',
   },
@@ -94,8 +94,8 @@ export const websiteServices: WebsiteService[] = [
     description:
       'Professional event coverage for launches, corporate events, private functions, and live experiences.',
     accent: '#ea580c',
-    deliverables: ['Highlight reel (3–5 min)', 'Full ceremony archive', 'Speaker grab pack', 'Social snippets'],
-    typicalScope: 'Up to 8 hours on site; 2–3 operators; live audio feed when available.',
+    deliverables: ['Highlight reel (3â€“5 min)', 'Full ceremony archive', 'Speaker grab pack', 'Social snippets'],
+    typicalScope: 'Up to 8 hours on site; 2â€“3 operators; live audio feed when available.',
     turnaround: 'Social clips in 48h; full highlight within 10 business days.',
   },
   {
@@ -107,7 +107,7 @@ export const websiteServices: WebsiteService[] = [
     description:
       'Beautiful wedding films and highlight videos that capture the emotion, people, and story of your day.',
     accent: '#d97706',
-    deliverables: ['Feature film (8–12 min)', 'Ceremony & vows edit', 'Teaser for social', 'Raw audio of vows'],
+    deliverables: ['Feature film (8â€“12 min)', 'Ceremony & vows edit', 'Teaser for social', 'Raw audio of vows'],
     typicalScope: 'Full-day coverage; 2 shooters; discreet cinema style.',
     turnaround: 'Teaser in 7 days; full film within 21 business days.',
   },
@@ -120,8 +120,8 @@ export const websiteServices: WebsiteService[] = [
     description:
       'Fast-paced sports content for athletes, teams, gyms, tournaments, and sports brands.',
     accent: '#dc2626',
-    deliverables: ['Match highlight (5–8 min)', 'Key-moment clips', 'Stats-aware chapter markers', 'Broadcast-safe master'],
-    typicalScope: 'Single match or training camp day; 2–4 cam when budget allows.',
+    deliverables: ['Match highlight (5â€“8 min)', 'Key-moment clips', 'Stats-aware chapter markers', 'Broadcast-safe master'],
+    typicalScope: 'Single match or training camp day; 2â€“4 cam when budget allows.',
     turnaround: 'Same-week social clips; full package within 7 business days.',
   },
   {
@@ -147,10 +147,10 @@ export const rateLines: RateLine[] = [
     count: 4,
     totalUsd: 7_800,
     rateUsd: 1_950,
-    accent: '#e8b23a',
-    summary: 'Director of Photography packages on narrative film — from prep through principal photography.',
-    deliverables: ['Shot & logged master footage', 'Camera & lighting plan', '1× DIT handoff', 'On-set stills pack'],
-    typicalScope: '3–5 shoot days per title; A-camera + B-camera when scripted; LUT preview on set.',
+    accent: '#e50914',
+    summary: 'Director of Photography packages on narrative film â€” from prep through principal photography.',
+    deliverables: ['Shot & logged master footage', 'Camera & lighting plan', '1Ã— DIT handoff', 'On-set stills pack'],
+    typicalScope: '3â€“5 shoot days per title; A-camera + B-camera when scripted; LUT preview on set.',
     turnaround: 'Dailies within 24h; project wrap within 5 business days of final shoot day.',
   },
   {
@@ -162,7 +162,7 @@ export const rateLines: RateLine[] = [
     rateUsd: 1_218.75,
     accent: '#3b82f6',
     summary: 'Launch films, product stories, corporate profiles and social cut-downs for brands and NGOs.',
-    deliverables: ['Hero film (60–90s)', '3× social cut-downs', 'Clean & captioned masters', 'Thumbnail still'],
+    deliverables: ['Hero film (60â€“90s)', '3Ã— social cut-downs', 'Clean & captioned masters', 'Thumbnail still'],
     typicalScope: 'Single-location or studio day; client on set; VO and music licencing quoted separately.',
     turnaround: 'Rough cut in 5 days; final delivery in 10 business days after picture lock.',
   },
@@ -175,7 +175,7 @@ export const rateLines: RateLine[] = [
     rateUsd: 487.5,
     accent: '#db2777',
     summary: 'Performance, narrative and hybrid promos for Kenyan and East African artists.',
-    deliverables: ['1× master MV (3–4 min)', '1× vertical social edit', 'Colour-graded ProRes master', 'Behind-the-scenes stills'],
+    deliverables: ['1Ã— master MV (3â€“4 min)', '1Ã— vertical social edit', 'Colour-graded ProRes master', 'Behind-the-scenes stills'],
     typicalScope: 'Half-day or full-day shoot; treatment supplied by A3 or artist team.',
     turnaround: 'Offline in 4 days; graded master in 8 business days.',
   },
@@ -188,7 +188,7 @@ export const rateLines: RateLine[] = [
     rateUsd: 487.5,
     accent: '#16a34a',
     summary: 'Cinematic property tours for developments, agents and hospitality venues.',
-    deliverables: ['Walk-through film (2–3 min)', 'Drone exteriors when permitted', 'Agent intro bumper', 'MLS-ready export'],
+    deliverables: ['Walk-through film (2â€“3 min)', 'Drone exteriors when permitted', 'Agent intro bumper', 'MLS-ready export'],
     typicalScope: 'Half-day on location; gimbal + drone combo where airspace allows.',
     turnaround: 'Draft in 3 days; final in 6 business days.',
   },
@@ -201,8 +201,8 @@ export const rateLines: RateLine[] = [
     rateUsd: 975,
     accent: '#ea580c',
     summary: 'Multi-cam recap films for conferences, galas, launches and cultural nights.',
-    deliverables: ['Highlight reel (3–5 min)', 'Full ceremony archive', 'Speaker grab pack', 'Social snippets'],
-    typicalScope: 'Up to 8 hours on site; 2–3 operators; live audio feed when available.',
+    deliverables: ['Highlight reel (3â€“5 min)', 'Full ceremony archive', 'Speaker grab pack', 'Social snippets'],
+    typicalScope: 'Up to 8 hours on site; 2â€“3 operators; live audio feed when available.',
     turnaround: 'Social clips in 48h; full highlight within 10 business days.',
   },
   {
@@ -213,8 +213,8 @@ export const rateLines: RateLine[] = [
     totalUsd: 1_950,
     rateUsd: 390,
     accent: '#d97706',
-    summary: 'Documentary-style wedding films — ceremony, reception and couple portraits woven into one story.',
-    deliverables: ['Feature film (8–12 min)', 'Ceremony & vows edit', 'Teaser for social', 'Raw audio of vows'],
+    summary: 'Documentary-style wedding films â€” ceremony, reception and couple portraits woven into one story.',
+    deliverables: ['Feature film (8â€“12 min)', 'Ceremony & vows edit', 'Teaser for social', 'Raw audio of vows'],
     typicalScope: 'Full-day coverage; 2 shooters; discreet cinema style.',
     turnaround: 'Teaser in 7 days; full film within 21 business days.',
   },
@@ -227,8 +227,8 @@ export const rateLines: RateLine[] = [
     rateUsd: 487.5,
     accent: '#dc2626',
     summary: 'Match packages, tournament recaps and athlete profile films for federations and clubs.',
-    deliverables: ['Match highlight (5–8 min)', 'Key-moment clips', 'Stats-aware chapter markers', 'Broadcast-safe master'],
-    typicalScope: 'Single match or training camp day; 2–4 cam when budget allows.',
+    deliverables: ['Match highlight (5â€“8 min)', 'Key-moment clips', 'Stats-aware chapter markers', 'Broadcast-safe master'],
+    typicalScope: 'Single match or training camp day; 2â€“4 cam when budget allows.',
     turnaround: 'Same-week social clips; full package within 7 business days.',
   },
 ];
@@ -237,7 +237,7 @@ export const proBonoLine = {
   label: 'Pro bono',
   count: 1,
   summary:
-    'One community or NGO slot per year — documentary short, awareness film or youth-project coverage. ' +
+    'One community or NGO slot per year â€” documentary short, awareness film or youth-project coverage. ' +
     'Selected by the studio; travel outside Nairobi billed at cost only.',
 };
 
@@ -254,11 +254,11 @@ export function getServiceBySlug(slug: string): WebsiteService | undefined {
 export const rateFaqs = [
   {
     q: 'Are these fixed prices?',
-    a: 'The prices shown are our published per-video guide rates. Final quotes depend on scope, locations, crew size and turnaround. We’ll confirm everything in a statement of work before you book.',
+    a: 'The prices shown are our published per-video guide rates. Final quotes depend on scope, locations, crew size and turnaround. Weâ€™ll confirm everything in a statement of work before you book.',
   },
   {
     q: 'Can we book a single video?',
-    a: 'Yes. You don’t need to book the full annual slate — pick the categories you need and we’ll schedule around your dates.',
+    a: 'Yes. You donâ€™t need to book the full annual slate â€” pick the categories you need and weâ€™ll schedule around your dates.',
   },
   {
     q: 'How does the pro bono slot work?',
@@ -273,7 +273,7 @@ export const rateFaqs = [
     a: 'USD for international clients; KES equivalent at Central Bank of Kenya mid-rate on invoice date for local brands.',
   },
   {
-    q: 'What’s included in a typical package?',
+    q: 'Whatâ€™s included in a typical package?',
     a: 'Pre-production, shoot day(s), edit, colour grade and a delivery master. Music rights, talent, VO and extra revisions are quoted separately.',
   },
 ];

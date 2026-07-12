@@ -12,8 +12,8 @@ export function Logo({
       <svg className="logo-mark" viewBox="0 0 48 48" role="img" aria-hidden="true">
         <defs>
           <linearGradient id="a3logo" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="#F5CD6B" />
-            <stop offset="1" stopColor="#D4202E" />
+            <stop offset="0" stopColor="#FF4D57" />
+            <stop offset="1" stopColor="#B20710" />
           </linearGradient>
         </defs>
         <path
