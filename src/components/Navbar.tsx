@@ -11,6 +11,7 @@ interface NavItem { to: string; label: string; end?: boolean; ai?: boolean }
 const primary: NavItem[] = [
   { to: '/films', label: 'Films' },
   { to: '/animation', label: 'Animation', ai: true },
+  { to: '/ai-films', label: 'AI Originals', ai: true },
   { to: '/series', label: 'Series & Docs' },
   { to: '/commercial', label: 'Commercial' },
   { to: '/sport', label: 'Sport' },

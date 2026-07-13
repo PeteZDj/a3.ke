@@ -34,7 +34,8 @@ export interface Film {
   director: string;
   cast: string[];
   featured?: boolean;    // appears in the home hero rotation
-  ai?: boolean;          // an "A3 AI Original" (generative / animated film)
+  ai?: boolean;          // an "A3 AI Original" (generative film)
+  animation?: boolean;   // an "A3 Animation Original" (2D/3D/CG animated film)
   accent: string;        // brand color used in gradient fallbacks (hex)
   trailerNote?: string;  // shown in the trailer modal
 

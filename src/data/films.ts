@@ -361,6 +361,56 @@ export const films: Film[] = [
     synopsis: 'An AI-animated myth for the machine age: a guardian built from brass, wood and African pattern stirs to life to defend a glowing sacred forest from those who would drain it. Generated in the A3 AI Lab.',
     director: 'Tunda Omondi', cast: ['Generative ensemble'], accent: '#eab308', trailerNote: 'An A3 AI Original — premieres 2026.',
   },
+
+  // A3 Animation Originals — hand-crafted 2D/3D/CG animated features from the studio
+  {
+    slug: 'dj24-war-of-sound', title: 'DJ24: War of Sound', year: 2025, kind: 'Film', animation: true,
+    status: 'Now Streaming', rating: 'PG', runtime: '1h 38m', language: 'English · Sheng',
+    genres: ['Animation', 'Musical', 'Adventure'],
+    logline: 'When the city\u2019s music is stolen, a young DJ must rebuild the beat and win the War of Sound.',
+    synopsis: 'In a Nairobi built from speakers and light, twelve-year-old Deejay discovers that the city\u2019s music is being silenced note by note. Armed with an old turntable and a fearless crew, he sets out to rebuild the rhythm of his home \u2014 and finds that the loudest sound of all is a city that refuses to go quiet. A vibrant animated musical about family, courage and finding your own beat.',
+    director: 'Pete Njagi', cast: ['Voice ensemble'], accent: '#6366f1', trailerNote: 'An A3 Animation Original — first look.',
+  },
+  {
+    slug: 'factor-c', title: 'Factor C', year: 2025, kind: 'Film', animation: true,
+    status: 'Now Streaming', rating: 'PG', runtime: '1h 42m', language: 'English · Swahili',
+    genres: ['Animation', 'Sci-Fi', 'Adventure'],
+    logline: 'A curious girl discovers a glowing element that could save \u2014 or unmake \u2014 her world.',
+    synopsis: 'Ada is the youngest inventor in her town, and when she uncovers \u201cFactor C\u201d \u2014 a crystal humming with impossible energy \u2014 she becomes the only one who can protect it. Chased across the highlands by those who would misuse its power, Ada learns that the greatest force of all is the one inside her. A warm, wondrous animated adventure about discovery and doing what\u2019s right.',
+    director: 'Imani Wekesa', cast: ['Voice ensemble'], accent: '#22d3ee', trailerNote: 'An A3 Animation Original — first look.',
+  },
+  {
+    slug: 'billionaire-x', title: 'Billionaire X', year: 2025, kind: 'Film', animation: true,
+    status: 'Now Streaming', rating: 'PG', runtime: '1h 45m', language: 'English · Sheng',
+    genres: ['Animation', 'Comedy', 'Adventure'],
+    logline: 'A broke market kid stumbles into a fortune \u2014 and the wildest, funniest day of his life.',
+    synopsis: 'Ex hustles sodas at the busiest market in the city, dreaming big and owning nothing. Then one lost briefcase turns his ordinary morning into a laugh-out-loud chase across town, where he learns that being a real \u201cbillionaire\u201d has nothing to do with money. A fast, funny, big-hearted animated comedy for the whole family.',
+    director: 'Baraka Kipchoge', cast: ['Voice ensemble'], accent: '#f59e0b', trailerNote: 'An A3 Animation Original — first look.',
+  },
+  {
+    slug: 'planet-infinite', title: 'Planet Infinite', year: 2026, kind: 'Film', animation: true,
+    status: 'Coming Soon', rating: 'PG', runtime: '1h 40m', language: 'English',
+    genres: ['Animation', 'Sci-Fi', 'Family'],
+    logline: 'Two young explorers leap between endless worlds to find their way home.',
+    synopsis: 'When a backyard experiment flings siblings Zola and Juma through a doorway to Planet Infinite \u2014 a universe of endless, ever-changing worlds \u2014 they must work together, world by world, to find the way back. A dazzling animated space adventure about wonder, siblinghood and the pull of home.',
+    director: 'Sanaa Kariuki', cast: ['Voice ensemble'], accent: '#a78bfa', trailerNote: 'An A3 Animation Original — premieres 2026.',
+  },
+  {
+    slug: 'chai-and-the-comet', title: 'Chai & the Comet', year: 2026, kind: 'Film', animation: true,
+    status: 'Coming Soon', rating: 'G', runtime: '1h 30m', language: 'No dialogue · Score',
+    genres: ['Animation', 'Fantasy', 'Family'],
+    logline: 'A highland girl befriends a fallen comet and races to return it to the sky.',
+    synopsis: 'High in the misty tea farms, a lonely girl named Chai finds a comet that has tumbled to earth \u2014 warm, glowing and very far from home. Together they journey across a hushed, painterly Kenya to send it back to the stars, and Chai learns that goodbyes can be the most beautiful part of a friendship. A wordless, tender animated fable told through image and score.',
+    director: 'Sanaa Kariuki', cast: ['Voice ensemble'], accent: '#fb7185', trailerNote: 'An A3 Animation Original — premieres 2026.',
+  },
+  {
+    slug: 'the-last-baobab', title: 'The Last Baobab', year: 2025, kind: 'Film', animation: true,
+    status: 'Now Streaming', rating: 'G', runtime: '1h 34m', language: 'English · Swahili',
+    genres: ['Animation', 'Adventure', 'Nature'],
+    logline: 'The animals of the savannah unite to protect the oldest tree in the world.',
+    synopsis: 'When the ancient baobab that shelters every creature on the plain begins to fade, an unlikely band of animals \u2014 led by a very small, very brave meerkat \u2014 sets out to save it. Across a golden-hour Serengeti, they discover that even the mightiest tree grows from the smallest act of courage. A sweeping, heartwarming animated adventure about home and the wild things worth protecting.',
+    director: 'Tunda Omondi', cast: ['Voice ensemble'], accent: '#84cc16', trailerNote: 'An A3 Animation Original — first look.',
+  },
 ];
 
 export const getFilm = (slug: string): Film | undefined =>
@@ -368,22 +418,28 @@ export const getFilm = (slug: string): Film | undefined =>
 
 export const featuredFilms = (): Film[] => films.filter((f) => f.featured);
 
-/** A3 AI Originals (generative / AI-animated). */
+/** A3 AI Originals (generative). */
 export const aiFilms = (): Film[] => films.filter((f) => f.ai);
 
-/** Everything that is NOT an AI Original — used by the standard catalogue pages. */
-export const standardFilms = (): Film[] => films.filter((f) => !f.ai);
+/** A3 Animation Originals (2D/3D/CG animated films). */
+export const animatedFilms = (): Film[] => films.filter((f) => f.animation);
 
-// Standard catalogue selectors exclude AI Originals (they have a dedicated page).
+/** Everything in the standard catalogue — excludes AI + Animation Originals (dedicated pages). */
+export const standardFilms = (): Film[] => films.filter((f) => !f.ai && !f.animation);
+
+// Standard catalogue selectors exclude AI + Animation Originals (they have dedicated pages).
 export const byStatus = (status: Film['status']): Film[] =>
-  films.filter((f) => f.status === status && !f.ai);
+  films.filter((f) => f.status === status && !f.ai && !f.animation);
 
 export const byKind = (kind: Film['kind']): Film[] =>
-  films.filter((f) => f.kind === kind && !f.ai);
+  films.filter((f) => f.kind === kind && !f.ai && !f.animation);
+
+const filmGroup = (f: Film): 'ai' | 'animation' | 'standard' =>
+  f.ai ? 'ai' : f.animation ? 'animation' : 'standard';
 
 export const relatedFilms = (film: Film, count = 6): Film[] => {
   const scored = films
-    .filter((f) => f.slug !== film.slug && Boolean(f.ai) === Boolean(film.ai))
+    .filter((f) => f.slug !== film.slug && filmGroup(f) === filmGroup(film))
     .map((f) => ({
       f,
       score: f.genres.filter((g) => film.genres.includes(g)).length,

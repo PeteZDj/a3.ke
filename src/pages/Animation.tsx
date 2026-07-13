@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { aiFilms } from '../data/films';
+import { animatedFilms } from '../data/films';
 import type { Film } from '../types';
 import { FilmCard } from '../components/FilmCard';
 import { TrailerModal } from '../components/TrailerModal';
@@ -16,11 +16,11 @@ const animationRates = ['animation', 'ai-commercial']
 
 export default function Animation() {
   const [trailer, setTrailer] = useState<Film | null>(null);
-  const films = aiFilms();
+  const films = animatedFilms();
   const feature = films.find((f) => f.status === 'Now Streaming') ?? films[0];
 
   useEffect(() => {
-    document.title = 'Animation & AI — A3 Studios';
+    document.title = 'Animation — A3 Studios';
   }, []);
 
   return (
@@ -33,12 +33,12 @@ export default function Animation() {
         <div className="hero-grain" aria-hidden="true" />
         <div className="anim-orbs" aria-hidden="true"><span /><span /><span /></div>
         <div className="container ai-hero-inner">
-          <div className="ai-badge-lg"><Sparkles /> Animation & Motion</div>
+          <div className="ai-badge-lg"><Sparkles /> Animation Studio</div>
           <h1>Animation, made in Nairobi</h1>
           <p className="ai-hero-lede">
-            2D, 3D, motion graphics and a fast-growing AI-animation practice. From title
-            sequences and animated ads to fully generative short films, A3 builds worlds
-            you can&rsquo;t shoot with a camera — art-directed frame by frame.
+            2D, 3D and CG animated features built frame by frame in-house. From the streets
+            of Nairobi to the edge of the galaxy, our animation team crafts big-hearted
+            original worlds for the whole family — six originals and counting.
           </p>
           {feature && (
             <div className="hero-actions">
@@ -78,9 +78,9 @@ export default function Animation() {
           <div className="section-head" style={{ marginBottom: 18 }}>
             <div>
               <div className="kicker">The showreel</div>
-              <h2 style={{ marginTop: 10 }}>Animated &amp; AI originals</h2>
+              <h2 style={{ marginTop: 10 }}>Animation originals</h2>
             </div>
-            <Link className="link" to="/ai-films">All AI Originals <ArrowRight style={{ width: 16, height: 16 }} /></Link>
+            <Link className="link" to="/ai-films">See our AI originals <ArrowRight style={{ width: 16, height: 16 }} /></Link>
           </div>
           <Reveal className="grid grid-stagger">
             {films.map((f) => <FilmCard key={f.slug} film={f} onPlay={setTrailer} />)}

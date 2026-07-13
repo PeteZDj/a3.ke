@@ -1,0 +1,11 @@
+a3.ke: split AI Originals & Animation into dedicated pages + 6 new animated films
+
+- AI Originals (/ai-films) stays dedicated to generative AI films; Animation
+  (/animation) is now its own hub for hand-crafted 2D/3D/CG features.
+- Add 6 Pixar-style Animation Originals: DJ24: War of Sound, Factor C,
+  Billionaire X, Planet Infinite, Chai & the Comet, The Last Baobab — with
+  original magi-generated posters (titled) and backdrops.
+- New `animation` film flag + animatedFilms() selector; standard catalogue
+  selectors exclude both AI and Animation originals.
+- Header now surfaces both Animation and AI Originals.
+- magi Pixar shot lists + style anchor + finalize script for the artwork.
