@@ -10,11 +10,11 @@ interface NavItem { to: string; label: string; end?: boolean; ai?: boolean }
 
 const primary: NavItem[] = [
   { to: '/films', label: 'Films' },
-  { to: '/animation', label: 'Animation', ai: true },
   { to: '/ai-films', label: 'AI Originals', ai: true },
   { to: '/series', label: 'Series & Docs' },
   { to: '/commercial', label: 'Commercial' },
   { to: '/sport', label: 'Sport' },
+  { to: '/animation', label: 'Animation' },
   { to: '/about', label: 'Studio' },
   { to: '/blog', label: 'Journal' },
 ];
@@ -23,11 +23,11 @@ const primary: NavItem[] = [
 const drawerLinks: NavItem[] = [
   { to: '/', label: 'Home', end: true },
   { to: '/films', label: 'Films' },
-  { to: '/animation', label: 'Animation', ai: true },
   { to: '/ai-films', label: 'AI Originals', ai: true },
   { to: '/series', label: 'Series & Docs' },
   { to: '/commercial', label: 'Commercial' },
   { to: '/sport', label: 'Sport' },
+  { to: '/animation', label: 'Animation' },
   { to: '/people', label: 'People' },
   { to: '/about', label: 'Studio' },
   { to: '/blog', label: 'Journal' },

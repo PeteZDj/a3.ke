@@ -16,11 +16,13 @@ import { useCountUp } from '../hooks/useCountUp';
 import { Play, ArrowRight, Clapper, Layers, Camera, Award, Quote, Star, Sparkles } from '../components/Icons';
 
 const rateHighlights = [
-  { title: 'DP / Movie Gigs', price: '$1,950', note: 'Cinematography & DP for films and premium productions.' },
-  { title: 'Commercial Videos', price: '$1,218.75', note: 'Brand films, product launches & social campaigns.' },
-  { title: 'Event Videos', price: '$975', note: 'Launches, conferences & live experiences.' },
-  { title: 'Music Videos', price: '$487.50', note: 'Performance & narrative promos, graded in-house.' },
-  { title: 'Sport Videos', price: '$487.50', note: 'Match highlights & athlete films.' },
+  { title: 'DP / Movie Gigs', price: '$975', note: 'Cinematography & DP for films and premium productions.' },
+  { title: 'Commercial Videos', price: '$609.38', note: 'Brand films, product launches & social campaigns.' },
+  { title: 'Animation', price: '$400', note: '2D/3D & AI-assisted animation, explainers & titles.' },
+  { title: 'Event Videos', price: '$487.50', note: 'Launches, conferences & live experiences.' },
+  { title: 'Music Videos', price: '$243.75', note: 'Performance & narrative promos, graded in-house.' },
+  { title: 'Sport Videos', price: '$243.75', note: 'Match highlights & athlete films.' },
+  { title: 'Photography', price: '$150', note: 'Portrait photography & photoshoots, studio or location.' },
   { title: 'Wedding Videos', price: '$390', note: 'Cinematic wedding films & highlight edits.' },
 ];
 
@@ -40,8 +42,8 @@ const services = [
 
 const collective = [
   { name: 'Pete Njagi', role: 'Studio Head · Director', accent: '#e50914' },
-  { name: 'Baraka Kipchoge', role: 'Head of Film', accent: '#b20710' },
-  { name: 'Imani Wekesa', role: 'Head of Production', accent: '#7c3aed' },
+  { name: 'Hopeking Muchira', role: 'Head of Film', accent: '#b20710' },
+  { name: 'Diana Gakuya', role: 'Head of Production', accent: '#7c3aed' },
   { name: 'Otieno Odhiambo', role: 'Head of Documentary', accent: '#0891b2' },
   { name: 'Sanaa Kariuki', role: 'Head of Series', accent: '#db2777' },
   { name: 'Tunda Omondi', role: 'Director of Photography', accent: '#ea580c' },

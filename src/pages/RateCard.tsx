@@ -161,13 +161,13 @@ export default function RateCard() {
           <Reveal className="rate-slate">
             <div className="kicker" style={{ marginBottom: 16 }}>Annual slate at a glance</div>
             <ul className="rate-slate-list">
-              <li><strong>4</strong> DP gigs (movies) — <strong>$7,800</strong> total · <strong>$1,950</strong> per video</li>
-              <li><strong>4</strong> Commercial — <strong>$4,875</strong> total · <strong>$1,218.75</strong> per video</li>
-              <li><strong>8</strong> Music videos — <strong>$3,900</strong> total · <strong>$487.50</strong> per video</li>
-              <li><strong>4</strong> Real estate videos — <strong>$1,950</strong> total · <strong>$487.50</strong> per video</li>
-              <li><strong>2</strong> Events — <strong>$1,950</strong> total · <strong>$975</strong> per video</li>
+              <li><strong>4</strong> DP gigs (movies) — <strong>$3,900</strong> total · <strong>$975</strong> per video</li>
+              <li><strong>4</strong> Commercial — <strong>$2,437.50</strong> total · <strong>$609.38</strong> per video</li>
+              <li><strong>8</strong> Music videos — <strong>$1,950</strong> total · <strong>$243.75</strong> per video</li>
+              <li><strong>4</strong> Real estate videos — <strong>$975</strong> total · <strong>$243.75</strong> per video</li>
+              <li><strong>2</strong> Events — <strong>$975</strong> total · <strong>$487.50</strong> per video</li>
               <li><strong>5</strong> Weddings — <strong>$1,950</strong> total · <strong>$390</strong> per video</li>
-              <li><strong>2</strong> Sport videos — <strong>$975</strong> total · <strong>$487.50</strong> per video</li>
+              <li><strong>2</strong> Sport videos — <strong>$487.50</strong> total · <strong>$243.75</strong> per video</li>
               <li><strong>1</strong> Pro bono — community / NGO slot</li>
             </ul>
             <p className="rate-slate-foot">

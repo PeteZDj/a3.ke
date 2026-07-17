@@ -95,7 +95,7 @@ export const fundingSeed: Record<string, Partial<FundingProfile>> = {
       { role: 'Director', name: 'Pete Njagi', pct: 22 },
       { role: 'Lead Cast', name: 'Neema Achieng', pct: 16 },
       { role: 'Screenplay', name: 'Halima Hassan', pct: 12 },
-      { role: 'Producer', name: 'Imani Wekesa', pct: 9 },
+      { role: 'Producer', name: 'Diana Gakuya', pct: 9 },
       { role: 'Cinematographer', name: 'Tunda Omondi', pct: 8 },
       { role: 'Editor', name: 'Sanaa Kariuki', pct: 7 },
       { role: 'Supporting Cast', name: 'Otieno Odhiambo', pct: 6 },

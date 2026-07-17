@@ -10,8 +10,8 @@ import type { Film, CrewMember, Episode, FilmAward } from '../types';
 // ============================================================================
 
 const DPS = ['Tunda Omondi', 'Zawadi Mwangi', 'Kevin Otieno', 'Amara Njoroge', 'Brian Kiptoo'];
-const WRITERS = ['Pete Njagi', 'Halima Hassan', 'Wanjiru Kamau', 'Baraka Kipchoge', 'Aisha Yusuf'];
-const PRODUCERS = ['Imani Wekesa', 'Achieng Otieno', 'David Mburu', 'Grace Muthoni'];
+const WRITERS = ['Pete Njagi', 'Halima Hassan', 'Wanjiru Kamau', 'Hopeking Muchira', 'Aisha Yusuf'];
+const PRODUCERS = ['Diana Gakuya', 'Achieng Otieno', 'David Mburu', 'Grace Muthoni'];
 const EDITORS = ['Sanaa Kariuki', 'Collins Barasa', 'Neema Achieng', 'Mercy Wairimu'];
 const COMPOSERS = ['Otieno Odhiambo', 'Juma Ali', 'Faith Nasimiyu'];
 const DESIGNERS = ['Lucy Wangeci', 'Peter Gitau', 'Salim Bakari'];

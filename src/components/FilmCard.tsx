@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import type { Film } from '../types';
 import { Poster } from './Poster';
-import { Backdrop } from './Backdrop';
-import { Play, Info, Plus, Sparkles } from './Icons';
+import { Play, Info, Plus, Check, Sparkles } from './Icons';
+import { inMyList, toggleMyList } from '../lib/mylist';
 
 function StatusFlag({ film }: { film: Film }) {
   if (film.status === 'Now Streaming')
@@ -14,6 +15,7 @@ function StatusFlag({ film }: { film: Film }) {
 
 export function FilmCard({ film, onPlay }: { film: Film; onPlay?: (f: Film) => void }) {
   const navigate = useNavigate();
+  const [saved, setSaved] = useState(() => inMyList(film.slug));
   return (
     <Link to={`/film/${film.slug}`} className="card" aria-label={film.title}>
       <div className="card-poster-wrap">
@@ -25,7 +27,7 @@ export function FilmCard({ film, onPlay }: { film: Film; onPlay?: (f: Film) => v
         {/* Netflix-style expanded preview shown on hover */}
         <div className="card-preview">
           <div className="card-preview-media">
-            <Backdrop film={film} className="card-preview-img" alt={`${film.title} preview`} loading="lazy" />
+            <Poster film={film} className="card-preview-img" />
             <span className="card-preview-trailer"><Play /> Trailer</span>
           </div>
           <div className="card-preview-body">
@@ -44,8 +46,13 @@ export function FilmCard({ film, onPlay }: { film: Film; onPlay?: (f: Film) => v
               >
                 <Info />
               </button>
-              <button className="co-btn" aria-label="Add to my list" onClick={(e) => e.preventDefault()}>
-                <Plus />
+              <button
+                className={`co-btn${saved ? ' saved' : ''}`}
+                aria-label={saved ? `Remove ${film.title} from my list` : `Add ${film.title} to my list`}
+                aria-pressed={saved}
+                onClick={(e) => { e.preventDefault(); setSaved(toggleMyList(film.slug)); }}
+              >
+                {saved ? <Check /> : <Plus />}
               </button>
             </div>
             <div className="card-preview-title">{film.title}</div>

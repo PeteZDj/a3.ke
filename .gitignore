@@ -19,10 +19,13 @@ yarn-error.log*
 # editor / OS
 .DS_Store
 Thumbs.db
-.vscode/
 .idea/
 
 # local-only deploy helpers (managed on the server, not in source control)
 _live*/
 DEV.md
 publish.ps1
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore

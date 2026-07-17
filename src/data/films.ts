@@ -38,7 +38,7 @@ export const films: Film[] = [
       'Two estranged brothers must cross the Great Rift Valley on foot — or lose everything they love.',
     synopsis:
       'After a failed land deal threatens their family ranch, brothers Baraka and Juma set out across the escarpment to reach the one man who can save them. What begins as a journey of necessity becomes a reckoning with the wild beauty of the valley and the fault lines running through their own blood. Shot on location across Lake Magadi and Hell\'s Gate.',
-    director: 'Baraka Kipchoge',
+    director: 'Hopeking Muchira',
     cast: ['Jabari Mutua', 'Daudi Kimani', 'Zawadi Mwangi'],
     featured: true,
     accent: '#f59e0b',
@@ -58,7 +58,7 @@ export const films: Film[] = [
       'A young ranger and an orphaned elephant calf become each other\'s last hope in the Mara.',
     synopsis:
       'On the edge of the Maasai Mara, trainee ranger Imani forms an unlikely bond with a calf separated from its herd by poachers. As the dry season tightens its grip, she must outwit the syndicate hunting them and lead the calf home. A sweeping, golden-hour epic about guardianship and the wild things worth fighting for.',
-    director: 'Imani Wekesa',
+    director: 'Diana Gakuya',
     cast: ['Sanaa Kariuki', 'Tunda Omondi', 'Neema Achieng'],
     featured: true,
     accent: '#d97706',
@@ -135,7 +135,7 @@ export const films: Film[] = [
       'In the final days before independence, a small village must decide what freedom is worth.',
     synopsis:
       'Spanning the charged months of 1963, Harambee follows three families in a highland village as the country holds its breath on the edge of a new era. An epic, intimate drama about hope, sacrifice and the meaning of "pulling together."',
-    director: 'Baraka Kipchoge',
+    director: 'Hopeking Muchira',
     cast: ['Jabari Mutua', 'Neema Achieng', 'Daudi Kimani', 'Halima Hassan'],
     accent: '#16a34a',
     trailerNote: 'Premieres 2026. First-look trailer coming soon.',
@@ -154,7 +154,7 @@ export const films: Film[] = [
       'In a solar-powered Nairobi of 2099, a teenage hacker uncovers a secret buried in the city\'s code.',
     synopsis:
       'Kanju imagines a gleaming, Afrofuturist capital where opportunity flows like current — until a glitch reveals who really controls the grid. A dazzling, hopeful sci-fi adventure about ingenuity, community and the future Africa is building for itself.',
-    director: 'Imani Wekesa',
+    director: 'Diana Gakuya',
     cast: ['Tunda Omondi', 'Sanaa Kariuki', 'Otieno Odhiambo'],
     accent: '#06b6d4',
     trailerNote: 'Premieres 2026. First-look trailer coming soon.',
@@ -251,7 +251,7 @@ export const films: Film[] = [
     genres: ['Corporate', 'Documentary-style'],
     logline: 'Real SME founders. One bank. A film about building from the ground up.',
     synopsis: 'Documentary-style brand film following three Kenyan entrepreneurs from workshop to storefront.',
-    director: 'Baraka Kipchoge', cast: ['Kenyan SME founders'], accent: '#b91c1c', trailerNote: 'Client reel excerpt.',
+    director: 'Hopeking Muchira', cast: ['Kenyan SME founders'], accent: '#b91c1c', trailerNote: 'Client reel excerpt.',
   },
   {
     slug: 'tusker-music-festival', title: 'Tusker — Festival Anthem', year: 2024, kind: 'Commercial',
@@ -285,7 +285,7 @@ export const films: Film[] = [
     genres: ['Football', 'KPL', 'Highlights'],
     logline: 'A season-long football film — goals, derbies and locker-room moments.',
     synopsis: 'Embedded with Gor Mahia for a full KPL season: highlights, tunnel access and a narrated season review.',
-    director: 'Baraka Kipchoge', cast: ['Gor Mahia FC'], accent: '#15803d', trailerNote: 'Club reel excerpt.',
+    director: 'Hopeking Muchira', cast: ['Gor Mahia FC'], accent: '#15803d', trailerNote: 'Club reel excerpt.',
   },
   {
     slug: 'kasarani-athletics-champs', title: 'Kasarani — National Athletics', year: 2025, kind: 'Sport',
@@ -293,7 +293,7 @@ export const films: Film[] = [
     genres: ['Athletics', 'Track & Field', 'Live'],
     logline: 'Track-side 4K, finish-line super-slo and same-day highlight packages.',
     synopsis: 'End-to-end athletics coverage at Kasarani with athlete interviews and same-night highlights.',
-    director: 'Imani Wekesa', cast: ['National athletics team'], accent: '#7c3aed', trailerNote: 'Broadcast reel excerpt.',
+    director: 'Diana Gakuya', cast: ['National athletics team'], accent: '#7c3aed', trailerNote: 'Broadcast reel excerpt.',
   },
   {
     slug: 'junior-hoops-nairobi', title: 'Junior Hoops — Nairobi League', year: 2024, kind: 'Sport',
@@ -319,7 +319,7 @@ export const films: Film[] = [
     genres: ['Animation', 'Afrofuturism', 'Adventure'],
     logline: 'A lone herder crosses a bioluminescent savannah guarded by a spirit lion of light.',
     synopsis: 'A3\'s first fully AI-animated short. In a savannah lit from within, a young herder follows a spirit lion made of light toward a promise left by the ancestors. Every frame was generated, art-directed and finished in the A3 AI Lab — a proof of what Kenyan storytelling can do with new tools.',
-    director: 'Imani Wekesa', cast: ['Generative ensemble'], accent: '#22d3ee', trailerNote: 'An A3 AI Original — first look.',
+    director: 'Diana Gakuya', cast: ['Generative ensemble'], accent: '#22d3ee', trailerNote: 'An A3 AI Original — first look.',
   },
   {
     slug: 'digital-ancestors', title: 'Digital Ancestors', year: 2025, kind: 'Film', ai: true,
@@ -335,7 +335,7 @@ export const films: Film[] = [
     genres: ['Animation', 'Sci-Fi', 'Adventure'],
     logline: 'In a floating coastal megacity, a dhow pilot smuggles hope past the tide barons.',
     synopsis: 'A sweeping AI-animated sci-fi set in a Mombasa of dhow-shaped towers rising from a risen sea. A young pilot runs one last cargo — and finds the future is worth fighting for. Generated and graded in the A3 AI Lab.',
-    director: 'Baraka Kipchoge', cast: ['Generative ensemble'], accent: '#f59e0b', trailerNote: 'An A3 AI Original — first look.',
+    director: 'Hopeking Muchira', cast: ['Generative ensemble'], accent: '#f59e0b', trailerNote: 'An A3 AI Original — first look.',
   },
   {
     slug: 'dreamscapes', title: 'Dreamscapes', year: 2026, kind: 'Film', ai: true,
@@ -377,7 +377,7 @@ export const films: Film[] = [
     genres: ['Animation', 'Sci-Fi', 'Adventure'],
     logline: 'A curious girl discovers a glowing element that could save \u2014 or unmake \u2014 her world.',
     synopsis: 'Ada is the youngest inventor in her town, and when she uncovers \u201cFactor C\u201d \u2014 a crystal humming with impossible energy \u2014 she becomes the only one who can protect it. Chased across the highlands by those who would misuse its power, Ada learns that the greatest force of all is the one inside her. A warm, wondrous animated adventure about discovery and doing what\u2019s right.',
-    director: 'Imani Wekesa', cast: ['Voice ensemble'], accent: '#22d3ee', trailerNote: 'An A3 Animation Original — first look.',
+    director: 'Diana Gakuya', cast: ['Voice ensemble'], accent: '#22d3ee', trailerNote: 'An A3 Animation Original — first look.',
   },
   {
     slug: 'billionaire-x', title: 'Billionaire X', year: 2025, kind: 'Film', animation: true,
@@ -385,7 +385,7 @@ export const films: Film[] = [
     genres: ['Animation', 'Comedy', 'Adventure'],
     logline: 'A broke market kid stumbles into a fortune \u2014 and the wildest, funniest day of his life.',
     synopsis: 'Ex hustles sodas at the busiest market in the city, dreaming big and owning nothing. Then one lost briefcase turns his ordinary morning into a laugh-out-loud chase across town, where he learns that being a real \u201cbillionaire\u201d has nothing to do with money. A fast, funny, big-hearted animated comedy for the whole family.',
-    director: 'Baraka Kipchoge', cast: ['Voice ensemble'], accent: '#f59e0b', trailerNote: 'An A3 Animation Original — first look.',
+    director: 'Hopeking Muchira', cast: ['Voice ensemble'], accent: '#f59e0b', trailerNote: 'An A3 Animation Original — first look.',
   },
   {
     slug: 'planet-infinite', title: 'Planet Infinite', year: 2026, kind: 'Film', animation: true,
@@ -410,6 +410,32 @@ export const films: Film[] = [
     logline: 'The animals of the savannah unite to protect the oldest tree in the world.',
     synopsis: 'When the ancient baobab that shelters every creature on the plain begins to fade, an unlikely band of animals \u2014 led by a very small, very brave meerkat \u2014 sets out to save it. Across a golden-hour Serengeti, they discover that even the mightiest tree grows from the smallest act of courage. A sweeping, heartwarming animated adventure about home and the wild things worth protecting.',
     director: 'Tunda Omondi', cast: ['Voice ensemble'], accent: '#84cc16', trailerNote: 'An A3 Animation Original — first look.',
+  },
+
+  // A3 Anime — episodic animated series (shown in Series & Docs and Animation)
+  {
+    slug: 'billionaire-x-the-series', title: 'Billionaire X: The Series', year: 2026, kind: 'Series', animation: true,
+    status: 'Now Streaming', rating: 'PG', runtime: '8-episode series', language: 'English · Sheng',
+    genres: ['Anime', 'Comedy', 'Adventure'],
+    logline: 'The hit animated comedy returns as a series — one broke market kid, a whole city of trouble.',
+    synopsis: 'Fresh off the wildest day of his life, Ex is back — and now the whole city knows his name. Across eight fast, funny episodes, our favourite market hustler juggles new schemes, old friends and the growing legend of \u201cBillionaire X\u201d, learning again and again that real riches have nothing to do with money. A big-hearted anime comedy series for the whole family.',
+    director: 'Hopeking Muchira', cast: ['Voice ensemble'], accent: '#f59e0b', trailerNote: 'An A3 Anime Original — new episodes monthly.',
+  },
+  {
+    slug: 'neon-ronin', title: 'Neon Ronin', year: 2026, kind: 'Series', animation: true,
+    status: 'Now Streaming', rating: '13+', runtime: '12-episode series', language: 'Swahili · English',
+    genres: ['Anime', 'Action', 'Sci-Fi'],
+    logline: 'A masterless swordswoman guards a rain-soaked Nairobi where memories are currency.',
+    synopsis: 'In a neon megacity built on stolen memory, a wandering ronin sells her blade to those the system forgot. Twelve stylish, hard-edged episodes trade in honour, revenge and the price of remembering — A3\u2019s first action anime, drawn in the studio\u2019s signature Afro-cyberpunk style.',
+    director: 'Diana Gakuya', cast: ['Voice ensemble'], accent: '#7c3aed', trailerNote: 'An A3 Anime Original — season one streaming.',
+  },
+  {
+    slug: 'savannah-guardians', title: 'Savannah Guardians', year: 2026, kind: 'Series', animation: true,
+    status: 'Coming Soon', rating: 'PG', runtime: '10-episode series', language: 'English · Swahili',
+    genres: ['Anime', 'Adventure', 'Fantasy'],
+    logline: 'Five kids and their spirit-animal partners defend the last wild places of the plains.',
+    synopsis: 'When the ancient balance of the savannah begins to break, five young guardians awaken bonds with towering spirit animals \u2014 lion, elephant, crane, pangolin and cheetah. Ten sweeping episodes of teamwork, courage and wonder, drawn as a warm, cinematic anime for family audiences everywhere.',
+    director: 'Tunda Omondi', cast: ['Voice ensemble'], accent: '#16a34a', trailerNote: 'An A3 Anime Original — premieres 2026.',
   },
 ];
 
