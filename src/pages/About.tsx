@@ -28,8 +28,8 @@ const officeGallery = [
 
 const team = [
   { name: 'Pete Njagi', role: 'Studio Head', accent: '#3b82f6' },
-  { name: 'Baraka Kipchoge', role: 'Head of Film', accent: '#f59e0b' },
-  { name: 'Imani Wekesa', role: 'Head of Production', accent: '#d97706' },
+  { name: 'Hopeking Muchira', role: 'Head of Film', accent: '#f59e0b' },
+  { name: 'Diana Gakuya', role: 'Head of Production', accent: '#d97706' },
   { name: 'Otieno Odhiambo', role: 'Head of Documentary', accent: '#ea580c' },
   { name: 'Sanaa Kariuki', role: 'Head of Series', accent: '#db2777' },
   { name: 'Tunda Omondi', role: 'Director of Photography', accent: '#dc2626' },

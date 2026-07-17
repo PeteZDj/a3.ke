@@ -73,22 +73,19 @@ export function buildArtworkSvg(input: ArtworkInput): string {
       <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
       <stop offset="100%" stop-color="rgba(0,0,0,0.75)"/>
     </linearGradient>
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-      <feComponentTransfer><feFuncA type="table" tableValues="0 0.09"/></feComponentTransfer>
-    </filter>
-    <filter id="blur"><feGaussianBlur stdDeviation="40"/></filter>
+    <radialGradient id="orb" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="${c}" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="${c}" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="${w}" height="${h}" fill="url(#bg)"/>
-  <ellipse cx="${w * 0.78}" cy="${h * 0.2}" rx="${variant === 'poster' ? 180 : 320}" ry="${variant === 'poster' ? 140 : 240}" fill="${c}" opacity="0.22" filter="url(#blur)"/>
-  <ellipse cx="${w * 0.15}" cy="${h * 0.75}" rx="${variant === 'poster' ? 120 : 200}" ry="${variant === 'poster' ? 100 : 160}" fill="${c}" opacity="0.14" filter="url(#blur)"/>
+  <ellipse cx="${w * 0.78}" cy="${h * 0.2}" rx="${variant === 'poster' ? 240 : 420}" ry="${variant === 'poster' ? 190 : 320}" fill="url(#orb)"/>
+  <ellipse cx="${w * 0.15}" cy="${h * 0.75}" rx="${variant === 'poster' ? 170 : 280}" ry="${variant === 'poster' ? 140 : 220}" fill="url(#orb)" opacity="0.7"/>
   <rect width="${w}" height="${h}" fill="url(#glow)"/>
   <rect width="${w}" height="${h}" fill="url(#beam)" opacity="0.5"/>
   ${perforations}
   <line x1="${titleX}" y1="${kindY - 28}" x2="${titleX + 48}" y2="${kindY - 28}" stroke="${c}" stroke-width="3" opacity="0.9"/>
   <rect width="${w}" height="${h}" fill="url(#floor)"/>
-  <rect width="${w}" height="${h}" filter="url(#grain)" opacity="0.4"/>
   <text x="${titleX}" y="${kindY}" fill="rgba(255,255,255,0.7)" font-family="system-ui,-apple-system,sans-serif" font-size="${variant === 'poster' ? 11 : 13}" letter-spacing="0.32em" font-weight="600">${esc(subtitle.toUpperCase())}</text>
   <text x="${titleX}" y="${titleY}" fill="#ffffff" font-family="Georgia,'Times New Roman',serif" font-size="${titleSize}" font-weight="700" letter-spacing="-0.025em">${titleSpans}</text>
   <text x="${titleX}" y="${h - (variant === 'poster' ? 40 : 52)}" fill="rgba(255,255,255,0.5)" font-family="system-ui,sans-serif" font-size="${variant === 'poster' ? 11 : 14}" letter-spacing="0.14em">${footer}</text>

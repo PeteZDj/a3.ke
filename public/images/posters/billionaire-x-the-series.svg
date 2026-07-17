@@ -30,9 +30,9 @@
   <rect width="600" height="900" fill="url(#glow)"/>
   <rect width="600" height="900" fill="url(#beam)" opacity="0.5"/>
   <rect x="12" y="24" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="88.28571428571429" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="152.57142857142858" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="216.8571428571429" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="281.14285714285717" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="345.42857142857144" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="409.7142857142858" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/><rect x="12" y="474.00000000000006" width="8" height="14" rx="2" fill="rgba(255,255,255,0.06)"/>
-  <line x1="36" y1="702" x2="84" y2="702" stroke="#f59e0b" stroke-width="3" opacity="0.9"/>
+  <line x1="36" y1="648" x2="84" y2="648" stroke="#f59e0b" stroke-width="3" opacity="0.9"/>
   <rect width="600" height="900" fill="url(#floor)"/>
-  <text x="36" y="730" fill="rgba(255,255,255,0.7)" font-family="system-ui,sans-serif" font-size="11" letter-spacing="0.32em" font-weight="600">FILM</text>
-  <text x="36" y="770" fill="#ffffff" font-family="Georgia,serif" font-size="48" font-weight="700" letter-spacing="-0.025em"><tspan x="36" dy="0">The Rift</tspan></text>
-  <text x="36" y="860" fill="rgba(255,255,255,0.5)" font-family="system-ui,sans-serif" font-size="11" letter-spacing="0.14em">A3 STUDIOS · 2025</text>
+  <text x="36" y="676" fill="rgba(255,255,255,0.7)" font-family="system-ui,sans-serif" font-size="11" letter-spacing="0.32em" font-weight="600">SERIES</text>
+  <text x="36" y="716" fill="#ffffff" font-family="Georgia,serif" font-size="48" font-weight="700" letter-spacing="-0.025em"><tspan x="36" dy="0">Billionaire X:</tspan><tspan x="36" dy="54">The Series</tspan></text>
+  <text x="36" y="860" fill="rgba(255,255,255,0.5)" font-family="system-ui,sans-serif" font-size="11" letter-spacing="0.14em">A3 STUDIOS · 2026</text>
 </svg>

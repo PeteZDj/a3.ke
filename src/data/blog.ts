@@ -44,7 +44,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'inside-the-ai-lab',
     title: 'Inside the A3 AI Lab: how we made Neon Savannah',
     excerpt: 'A frame-by-frame look at our first fully AI-animated short \u2014 the pipeline, the pitfalls and why it still needs a director.',
-    author: 'Imani Wekesa', authorRole: 'Head of Production',
+    author: 'Diana Gakuya', authorRole: 'Head of Production',
     date: '2025-06-02', readMins: 8, category: 'AI Lab', cover: '/images/blog/blog-02.webp',
     tags: ['AI Lab', 'Animation', 'Pipeline'],
     pullquote: 'The tools generate images. Directors generate meaning.',
@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'shooting-the-rift-on-foot',
     title: 'Crossing the Rift on foot: the making of a survival epic',
     excerpt: 'Thirty-one days on the escarpment with a fully Kenyan crew, two brothers and one very stubborn camera cart.',
-    author: 'Baraka Kipchoge', authorRole: 'Head of Film',
+    author: 'Hopeking Muchira', authorRole: 'Head of Film',
     date: '2025-05-04', readMins: 9, category: 'On Set', cover: '/images/blog/blog-04.webp',
     tags: ['Location', 'Epics', 'Production'],
     body: [
@@ -154,7 +154,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'training-the-next-generation',
     title: 'The A3 attachment programme: training the next crew',
     excerpt: 'How we bring young Kenyan filmmakers onto real sets \u2014 paid, mentored and credited from day one.',
-    author: 'Imani Wekesa', authorRole: 'Head of Production',
+    author: 'Diana Gakuya', authorRole: 'Head of Production',
     date: '2025-01-18', readMins: 6, category: 'Studio', cover: '/images/blog/blog-10.webp',
     tags: ['Training', 'Community', 'Careers'],
     body: [
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'writing-afrofuturism-kanju',
     title: 'Writing Afrofuturism: the world of Kanju',
     excerpt: 'Building a solar-powered Nairobi of 2099 that feels hopeful, specific and unmistakably Kenyan.',
-    author: 'Imani Wekesa', authorRole: 'Head of Production',
+    author: 'Diana Gakuya', authorRole: 'Head of Production',
     date: '2024-12-20', readMins: 7, category: 'Craft', cover: '/images/blog/blog-11.webp',
     tags: ['Writing', 'Sci-Fi', 'Afrofuturism'],
     body: [

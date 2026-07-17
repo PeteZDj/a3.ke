@@ -27,15 +27,15 @@ export const people: Person[] = [
     tags: ['Directing', 'Story', 'Neo-noir', 'AI Lab'],
   },
   {
-    slug: 'baraka-kipchoge', name: 'Baraka Kipchoge', role: 'Head of Film', kind: 'Director', based: 'Eldoret · Nairobi',
+    slug: 'hopeking-muchira', name: 'Hopeking Muchira', role: 'Head of Film', kind: 'Director', based: 'Eldoret · Nairobi',
     accent: '#f59e0b',
-    bio: 'Baraka leads A3\'s feature slate. Raised in the Rift Valley, he is drawn to landscape as character — survival epics, histories and the quiet drama of families under pressure. His films have travelled from FESPACO to Toronto.',
+    bio: 'Hopeking leads A3\'s feature slate. Raised in the Rift Valley, he is drawn to landscape as character — survival epics, histories and the quiet drama of families under pressure. His films have travelled from FESPACO to Toronto.',
     tags: ['Directing', 'Epics', 'History', 'Location'],
   },
   {
-    slug: 'imani-wekesa', name: 'Imani Wekesa', role: 'Head of Production', kind: 'Director', based: 'Nairobi',
+    slug: 'diana-gakuya', name: 'Diana Gakuya', role: 'Head of Production', kind: 'Director', based: 'Nairobi',
     accent: '#d97706',
-    bio: 'Imani keeps A3 moving — a producer-director who has run everything from wildlife adventures to Afrofuturist sci-fi. She built the studio\'s production pipeline and now steers its AI-animation lab.',
+    bio: 'Diana keeps A3 moving — a producer-director who has run everything from wildlife adventures to Afrofuturist sci-fi. She built the studio\'s production pipeline and now steers its AI-animation lab.',
     tags: ['Producing', 'Directing', 'Sci-Fi', 'AI Lab'],
   },
   {
