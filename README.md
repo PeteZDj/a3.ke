@@ -1,57 +1,34 @@
-# A3 Studios — [a3.ke](https://a3.ke)
+<img src="docs/portfolio/logo.png" alt="A3 Studios logo" width="100">
 
-<div align="center">
+# A3 Studios
 
-**Film · Commercial video · Sport coverage**
+*One studio. Every format.*
 
-A cinematic, Netflix-style showcase for **A3 Studios** — a Nairobi-based production house led by **Pete Njagi (Studio Head)**.
+[Visit A3 Studios](https://a3.ke/) · [Repository guide](#repository-guide)
 
-[![Live site](https://img.shields.io/badge/live-a3.ke-gold?style=for-the-badge)](https://a3.ke)
-[![React](https://img.shields.io/badge/React-18-61dafb?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
-[![Vite](https://img.shields.io/badge/Vite-5-646cff?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+## Idea
 
-</div>
+A Nairobi production studio for film, commercial video and live sport.
 
----
+## Overview
 
-## What this is
+A3 takes a brief from planning and shooting through editing and delivery. The public site shows the studio’s film, commercial video, and sport work in one catalogue.
 
-A3 Studios is more than a film catalogue. The site showcases three pillars of work:
-
-| Pillar | Route | What's on it |
-| --- | --- | --- |
-| **Films & series** | `/films` · `/series` | Feature originals, binge-worthy series and documentaries |
-| **Commercial & video** | `/commercial` | Brand films, launch spots, corporate stories, PSAs, music videos |
-| **Sport coverage** | `/sport` | Match coverage, tournament recaps, live vision, athlete films |
-
-Everything lives in one catalogue (`src/data/films.ts`). Missing poster images automatically render branded gradient cards — the UI never looks broken.
-
----
+The studio serves brands, agencies, broadcasters, and event organizers in Nairobi and across East Africa.
 
 ## Screenshots
 
-### Home — hero & catalogue
+**[A3 Studios homepage](https://a3.ke/)**
 
-![Home hero preview](docs/screenshots/home-hero.svg)
+![A3 Studios homepage](docs/portfolio/product.webp)
 
-Rotating featured originals plus rows for films, series, **commercial video** and **sport coverage**.
+**[Production catalogue](https://a3.ke/)**
 
-### Commercial & video
+![Production catalogue](docs/portfolio/feature.webp)
 
-![Commercial catalogue preview](docs/screenshots/commercial-grid.svg)
+## Repository guide
 
-Brand campaigns from launch films to NGO PSAs — each with its own detail page at `/film/:slug`.
-
-### Sport coverage
-
-![Sport catalogue preview](docs/screenshots/sport-grid.svg)
-
-Rugby, football, athletics, basketball and boxing — broadcast packages and highlight films.
-
----
-
-## Tech stack
+### Tech stack
 
 - **Vite 5** + **React 18** + **TypeScript**
 - **React Router 6** — SPA with IIS rewrite to `index.html`
@@ -60,7 +37,7 @@ Rugby, football, athletics, basketball and boxing — broadcast packages and hig
 
 ---
 
-## Quick start
+### Quick start
 
 ```bash
 git clone https://github.com/PeteZDj/a3.ke.git
@@ -77,7 +54,7 @@ npm run typecheck
 
 ---
 
-## Project structure
+### Project structure
 
 ```
 a3.ke/
@@ -91,7 +68,7 @@ a3.ke/
 └── src/index.css              cinematic design system
 ```
 
-### Adding a project
+#### Adding a project
 
 1. Add an entry to `src/data/films.ts` with the right `kind`.
 2. Optionally add `public/images/posters/<slug>.jpg` and `public/images/backdrops/<slug>.jpg`.
@@ -99,7 +76,7 @@ a3.ke/
 
 ---
 
-## Deploy
+### Deploy
 
 Hosted at **[https://a3.ke](https://a3.ke)** on IIS (`C:\inetpub\wwwroot\a3.ke`).
 
@@ -110,7 +87,7 @@ robocopy dist C:\inetpub\wwwroot\a3.ke /MIR /XJ
 
 ---
 
-## Studio
+### Studio
 
 **Pete Njagi (Studio Head)** — A3 Studios, Industrial Area, Nairobi, Kenya
 
